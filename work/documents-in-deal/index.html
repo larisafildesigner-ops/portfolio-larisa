@@ -1,0 +1,280 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Документы в&nbsp;сделке застройщика — кейс Ларисы Филипповской</title>
+    <meta
+      name="description"
+      content="Кейс о&nbsp;переработке сценария работы с&nbsp;документами внутри мастер-сделки: контекст, роль, задача, стратегия, решение, валидация и&nbsp;результат."
+    >
+    <meta property="og:title" content="Документы в&nbsp;сделке застройщика — кейс">
+    <meta
+      property="og:description"
+      content="B2B proptech case study: от&nbsp;ручной работы в&nbsp;Word до&nbsp;роста использования блока документов внутри системы."
+    >
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body class="page--case-documents-v1">
+    <main class="case-documents-v1">
+      <header class="case-documents-v1__topbar reveal" aria-label="Навигация кейса">
+        <a class="case-documents-v1__back" href="../../index.html" aria-label="Назад на главную">← Назад</a>
+      </header>
+
+      <div class="case-documents-v1__content">
+        <section class="case-documents-v1__hero reveal" aria-labelledby="documents-case-title">
+          <h1 class="case-documents-v1__title" id="documents-case-title">Документы в&nbsp;сделке застройщика</h1>
+          <div class="case-documents-v1__hero-grid">
+            <div class="case-documents-v1__summary">
+              <p class="case-documents-v1__lead">
+                Менеджеры уходили из&nbsp;продукта в&nbsp;Word на&nbsp;критическом этапе сделки.
+                Я вернула документы в&nbsp;контур сделки и&nbsp;сократила ручную работу.
+              </p>
+
+              <div class="case-documents-v1__metrics-block" aria-label="Ключевые метрики">
+                <p class="case-documents-v1__metrics-label">За&nbsp;6 месяцев после обновления:</p>
+                <div class="case-documents-v1__metrics">
+                  <article class="case-documents-v1__metric">
+                    <strong data-countup data-countup-value="10" data-countup-prefix="+" data-countup-suffix="%">+10%</strong>
+                    <span>Доля активных менеджеров, создавших хотя бы один договор в&nbsp;системе</span>
+                  </article>
+                  <article class="case-documents-v1__metric">
+                    <strong data-countup data-countup-value="37" data-countup-prefix="+" data-countup-suffix="%">+37%</strong>
+                    <span>Рост количества документов в&nbsp;системе</span>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-documents-v1__hero-media">
+              <img
+                src="../../assets/case-documents-hero.png"
+                alt="Главный экран кейса по&nbsp;работе с&nbsp;документами в&nbsp;сделке"
+                width="875"
+                height="585"
+              >
+            </div>
+          </div>
+        </section>
+
+        <section class="case-documents-v1__section reveal" aria-labelledby="documents-context-title">
+          <h2 class="case-documents-v1__section-title" id="documents-context-title">Контекст <span class="case-documents-v1__section-index">01</span></h2>
+          <div class="case-documents-v1__section-content">
+            <p>
+              Profitbase — B2B SaaS для&nbsp;застройщиков. В&nbsp;мастер-сделке продукт объединял
+              ключевые этапы оформления недвижимости, но&nbsp;блок документов выпадал из&nbsp;этого
+              процесса.
+            </p>
+            <p>
+              После заявки и&nbsp;подбора условий менеджер продолжал работать вручную: готовил
+              документы в&nbsp;Word и&nbsp;Google Docs, согласовывал правки, искал нужные версии и&nbsp;потом отдельно загружал файлы в&nbsp;систему для&nbsp;регистрации.
+            </p>
+            <p>
+              Таким образом, документы были связаны с&nbsp;этапом регистрации и&nbsp;не могли
+              участвовать в&nbsp;системе на&nbsp;ранних этапах. Для&nbsp;менеджера это означало лишние
+              действия, путаницу в&nbsp;версиях и&nbsp;потерю времени. Для&nbsp;бизнеса — слабую
+              управляемость процесса и&nbsp;потерю скорости на&nbsp;важном этапе сделки.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-documents-v1__section reveal" aria-labelledby="documents-role-title">
+          <h2 class="case-documents-v1__section-title" id="documents-role-title">Моя роль <span class="case-documents-v1__section-index">02</span></h2>
+          <div class="case-documents-v1__section-content">
+            <p>
+              Я отвечала за&nbsp;сценарий работы с&nbsp;документами внутри мастер-сделки: логику flow,
+              структуру решения, UX ключевых экранов и&nbsp;связку с&nbsp;соседними этапами процесса.
+            </p>
+            <p>
+              Работала вместе с&nbsp;PM, аналитиком и&nbsp;разработкой. Решение нужно было не&nbsp;просто
+              сделать удобным, а&nbsp;встроить в&nbsp;реальный сценарий сделки без&nbsp;разрывов.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-documents-v1__section reveal" aria-labelledby="documents-task-title">
+          <h2 class="case-documents-v1__section-title" id="documents-task-title">Задача <span class="case-documents-v1__section-index">03</span></h2>
+          <div class="case-documents-v1__section-content">
+            <p>
+              Нужно было переработать сценарий с&nbsp;документами так, чтобы менеджер смог
+              работать с&nbsp;ними на&nbsp;любом этапе сделки. На&nbsp;старте я собрала сценарий по&nbsp;трём
+              источникам: текущий путь сделки, обратная связь от&nbsp;застройщиков и&nbsp;продуктовая
+              аналитика.
+            </p>
+            <p>
+              Это показало, что проблема была не&nbsp;в одном экране, а&nbsp;в разрыве между сделкой,
+              документами и&nbsp;регистрацией. Я составила CJM текущего сценария и&nbsp;карту ролей —
+              это зафиксировало, кто и&nbsp;где выпадает из&nbsp;процесса.
+            </p>
+            <p>
+              Из&nbsp;этого я вынесла три вывода: документ в&nbsp;этом процессе — не&nbsp;вложение, а&nbsp;часть
+              сделки; у&nbsp;разных клиентов с&nbsp;документами работают разные роли: менеджер, юрист
+              или оба вместе; документы нужно проектировать сразу с&nbsp;учётом следующего этапа,
+              а&nbsp;не как локальную функцию.
+            </p>
+          </div>
+
+          <div class="case-documents-v1__screens">
+            <div class="case-documents-v1__screen case-documents-v1__screen--before">
+              <div class="case-documents-v1__screen-copy">
+                <p class="case-documents-v1__screen-title">Документы в&nbsp;сделке до</p>
+                <p class="case-documents-v1__screen-note">
+                  Доступны только на&nbsp;этапе подготовки договора
+                </p>
+              </div>
+              <div class="case-documents-v1__screen-media case-documents-v1__screen-media--wide">
+                <img
+                  src="../../assets/case-documents-before.png"
+                  alt="Старый сценарий документов в&nbsp;сделке до&nbsp;переработки"
+                  width="875"
+                  height="432"
+                >
+              </div>
+            </div>
+
+            <div class="case-documents-v1__screen case-documents-v1__screen--after">
+              <div class="case-documents-v1__screen-media case-documents-v1__screen-media--wide">
+                <img
+                  src="../../assets/case-documents-after.png"
+                  alt="Новый блок документов в&nbsp;сделке после переработки"
+                  width="875"
+                  height="432"
+                >
+              </div>
+              <div class="case-documents-v1__screen-copy">
+                <p class="case-documents-v1__screen-title">Документы в&nbsp;сделке после</p>
+                <p class="case-documents-v1__screen-note">
+                  Доступны на&nbsp;любом этапе сделки
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-documents-v1__section reveal" aria-labelledby="documents-strategy-title">
+          <h2 class="case-documents-v1__section-title" id="documents-strategy-title">Стратегия <span class="case-documents-v1__section-index">04</span></h2>
+          <div class="case-documents-v1__section-content">
+            <p>
+              Я проектировала блок документов не&nbsp;как отдельный раздел с&nbsp;файлами, а&nbsp;как часть
+              сделки. В&nbsp;первой версии сфокусировалась на&nbsp;трёх задачах: сократить ручную
+              работу за&nbsp;счёт шаблонов, генерации и&nbsp;перегенерации; удержать работу с&nbsp;документами внутри сделки; подготовить документы к&nbsp;следующему этапу без&nbsp;ручной
+              пересборки.
+            </p>
+            <p>
+              Мы сознательно не&nbsp;шли в&nbsp;сложный редактор и&nbsp;не пытались покрыть все частные
+              сценарии. Для&nbsp;первой версии было важнее убрать главный разрыв в&nbsp;процессе и&nbsp;быстрее запустить рабочее решение.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-documents-v1__section reveal" aria-labelledby="documents-solution-title">
+          <h2 class="case-documents-v1__section-title" id="documents-solution-title">Решение <span class="case-documents-v1__section-index">05</span></h2>
+          <div class="case-documents-v1__section-content case-documents-v1__section-content--stacked">
+            <p>
+              В&nbsp;итоге решение позволило сразу работать с&nbsp;документами прямо внутри
+              мастер-сделки: можно загрузить файл, выбрать шаблон, сгенерировать документ из&nbsp;данных сделки, пересобрать его при&nbsp;изменениях и&nbsp;добавить подписантов.
+            </p>
+            <p>
+              Я оставила единый вход в&nbsp;блок документов внутри сделки, потому что пользователи
+              приходили туда с&nbsp;разными задачами: быстро добавить файл, собрать комплект или
+              подготовить пакет к&nbsp;регистрации.
+            </p>
+            <p>
+              Чтобы сценарий был проще в&nbsp;работе, на&nbsp;верхнем уровне я разделила документы на&nbsp;рабочие и&nbsp;подписанные. Для&nbsp;более сложных процессов добавила ответственность по&nbsp;документу — это помогало там, где в&nbsp;сценарии участвовали несколько ролей.
+            </p>
+            <p>
+              В&nbsp;результате менеджер мог собрать пакет документов, согласовать его и&nbsp;передать
+              дальше без&nbsp;ручного разрыва между подготовкой и&nbsp;регистрацией.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-documents-v1__section reveal" aria-labelledby="documents-validation-title">
+          <h2 class="case-documents-v1__section-title" id="documents-validation-title">Валидация <span class="case-documents-v1__section-index">06</span></h2>
+          <div class="case-documents-v1__section-content">
+            <p>
+              В&nbsp;первой версии мы специально ограничили объём решения и&nbsp;не уходили в&nbsp;полный
+              документооборот. Перед релизом проверили критические пути сделки с&nbsp;командой,
+              отдельно просмотрели десктопную и&nbsp;адаптивную версии и&nbsp;доработали тексты,
+              статусы и&nbsp;различия между загрузкой, генерацией и&nbsp;перегенерацией.
+            </p>
+            <p>
+              Это помогло сделать сценарий понятнее без&nbsp;лишнего обучения.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-documents-v1__result reveal" aria-labelledby="documents-result-title">
+          <div class="case-documents-v1__section">
+            <h2 class="case-documents-v1__section-title" id="documents-result-title">Результат <span class="case-documents-v1__section-index">07</span></h2>
+            <div class="case-documents-v1__section-content">
+              <p>
+                После запуска использование блока документов выросло: доля активных
+                менеджеров, создавших хотя бы один договор в&nbsp;системе, +10%; доля менеджеров,
+                использующих шаблоны, +3%; количество документов, созданных или загруженных
+                в&nbsp;системе, +37% за&nbsp;6 месяцев после запуска к&nbsp;аналогичному периоду до.
+              </p>
+              <p>
+                Я не&nbsp;связываю это напрямую с&nbsp;выручкой: блок документов не&nbsp;был основным
+                драйвером монетизации. Но&nbsp;решение дало понятный операционный эффект — больше
+                работы с&nbsp;документами стало происходить внутри системы, а&nbsp;переход к&nbsp;следующему этапу сделки стал менее ручным.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-documents-v1__screens">
+            <div class="case-documents-v1__screen">
+              <div class="case-documents-v1__screen-media">
+                <img
+                  src="../../assets/case-documents-sidebar.png"
+                  alt="Документы открываются в&nbsp;сайдбаре"
+                  width="875"
+                  height="439"
+                >
+              </div>
+              <div class="case-documents-v1__screen-copy">
+                <p class="case-documents-v1__screen-title">Документы открываются в&nbsp;сайдбаре</p>
+              </div>
+            </div>
+
+            <div class="case-documents-v1__screen">
+              <div class="case-documents-v1__screen-media">
+                <img
+                  src="../../assets/case-documents-package.png"
+                  alt="Пакет документов в&nbsp;мастер-сделке"
+                  width="875"
+                  height="439"
+                >
+              </div>
+              <div class="case-documents-v1__screen-copy">
+                <p class="case-documents-v1__screen-title">Пакет документов</p>
+              </div>
+            </div>
+
+            <div class="case-documents-v1__screen">
+              <div class="case-documents-v1__screen-media">
+                <img
+                  src="../../assets/case-documents-template.png"
+                  alt="Выбор шаблона для&nbsp;документа"
+                  width="875"
+                  height="439"
+                >
+              </div>
+              <div class="case-documents-v1__screen-copy">
+                <p class="case-documents-v1__screen-title">Выбор шаблона</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="case-documents-v1__pager reveal" aria-label="Навигация по кейсам">
+          <a class="case-documents-v1__back" href="../../index.html" aria-label="Назад на главную">← Назад</a>
+          <a class="case-documents-v1__next" href="../paid-booking/index.html" aria-label="Открыть следующий кейс">Следующий кейс →</a>
+        </nav>
+      </div>
+    </main>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>
+

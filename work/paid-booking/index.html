@@ -1,0 +1,260 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Онлайн-бронирование на&nbsp;сайте застройщика — кейс Ларисы Филипповской</title>
+    <meta
+      name="description"
+      content="Кейс о&nbsp;запуске онлайн-бронирования на&nbsp;сайте застройщика: контекст, роль, задача, стратегия, решение, валидация и&nbsp;результат."
+    >
+    <meta property="og:title" content="Онлайн-бронирование на&nbsp;сайте застройщика — кейс">
+    <meta
+      property="og:description"
+      content="B2B proptech case study: от&nbsp;проектирования MVP-сценария онлайн-бронирования до&nbsp;роста общей конверсии в&nbsp;бронь на&nbsp;4%."
+    >
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body class="page--case-booking-v2">
+    <main class="case-booking-v2">
+      <header class="case-booking-v2__topbar reveal" aria-label="Навигация кейса">
+        <a class="case-booking-v2__back" href="../../index.html" aria-label="Назад на главную">← Назад</a>
+      </header>
+
+      <div class="case-booking-v2__content">
+        <section class="case-booking-v2__hero reveal" aria-labelledby="case-title">
+          <h1 class="case-booking-v2__title" id="case-title">Онлайн-бронирование на&nbsp;сайте застройщика</h1>
+          <div class="case-booking-v2__hero-grid">
+            <div class="case-booking-v2__summary">
+              <p class="case-booking-v2__lead">
+                Спроектировала с&nbsp;нуля платное онлайн-бронирование квартиры для&nbsp;сайта
+                застройщика — новый цифровой шаг между выбором лота и&nbsp;следующей стадией
+                сделки.
+              </p>
+
+              <div class="case-booking-v2__metrics-block" aria-label="Ключевые метрики">
+                <p class="case-booking-v2__metrics-label">За&nbsp;8 месяцев после запуска:</p>
+                <div class="case-booking-v2__metrics">
+                  <article class="case-booking-v2__metric">
+                    <strong data-countup data-countup-value="10" data-countup-suffix="%">10%</strong>
+                    <span>Конверсия из&nbsp;заявки в&nbsp;онлайн-бронирование</span>
+                  </article>
+                  <article class="case-booking-v2__metric">
+                    <strong data-countup data-countup-value="4" data-countup-prefix="+" data-countup-suffix="%">+4%</strong>
+                    <span>Общая конверсия из&nbsp;заявки в&nbsp;бронь выросла на&nbsp;4%</span>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-booking-v2__hero-media">
+              <img
+                src="../../assets/case-booking-hero-v3.png"
+                alt="Экран кейса онлайн-бронирования на&nbsp;сайте застройщика"
+                width="1642"
+                height="1133"
+              >
+            </div>
+          </div>
+        </section>
+
+        <section class="case-booking-v2__section reveal" aria-labelledby="context-title">
+          <h2 class="case-booking-v2__section-title" id="context-title">Контекст <span class="case-booking-v2__section-index">01</span></h2>
+          <div class="case-booking-v2__section-content">
+            <p>
+              Profitbase — экосистема proptech-сервисов для&nbsp;девелоперов жилья: набор взаимосвязанных
+              SaaS-модулей, покрывающих весь цикл продажи квартиры. Модуль «Смарт-каталог» — виджет
+              для&nbsp;сайта застройщика с&nbsp;3D-планировками, фильтрами и&nbsp;акциями.
+            </p>
+            <p>
+              Это основной источник трафика: около 60% заявок приходят со&nbsp;смарт-каталога, а&nbsp;конверсия
+              в&nbsp;сделку здесь в&nbsp;три раза выше среднего. В&nbsp;конце 2023 — начале 2024 команда искала точки
+              роста в&nbsp;воронке.
+            </p>
+            <p>
+              Разрыв был хорошо виден: пользователь выбирал квартиру, оставлял заявку — и&nbsp;дальше всё
+              переходило к&nbsp;менеджеру, телефону и&nbsp;ручному бронированию. Часть клиентов в&nbsp;этой цепочке
+              терялась: менеджер мог не&nbsp;успеть, а&nbsp;пользователь — остыть или уйти к&nbsp;конкуренту.
+            </p>
+            <p>
+              Онлайн-бронирование уже появлялось у&nbsp;крупных игроков рынка и&nbsp;постепенно становилось новой
+              нормой. Но&nbsp;главная проблема была не&nbsp;в отсутствии фичи, а&nbsp;в провале между интересом
+              пользователя и&nbsp;его действием.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-booking-v2__section reveal" aria-labelledby="role-title">
+          <h2 class="case-booking-v2__section-title" id="role-title">Моя роль <span class="case-booking-v2__section-index">02</span></h2>
+          <div class="case-booking-v2__section-content">
+            <p>
+              Я отвечала за&nbsp;полный MVP-сценарий: покупательский flow, сценарий бронирования через
+              менеджера и&nbsp;базовые настройки админки. На&nbsp;моей стороне были UX-логика, ключевые
+              состояния, приоритизация, аргументация перед стейкхолдерами и&nbsp;контроль качества
+              реализации.
+            </p>
+            <p>
+              Работала вместе с&nbsp;PM, аналитиком и&nbsp;разработкой. Отдельным требованием бизнеса был
+              чистый, аккуратный интерфейс — он не&nbsp;должен усиливать тревожность в&nbsp;момент оплаты и&nbsp;ввода юридически значимых данных.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-booking-v2__section reveal" aria-labelledby="task-title">
+          <h2 class="case-booking-v2__section-title" id="task-title">Задача <span class="case-booking-v2__section-index">03</span></h2>
+          <div class="case-booking-v2__section-content">
+            <p>
+              Нужно было спроектировать с&nbsp;нуля сценарий, который одновременно решает несколько задач:
+              помогает пользователю зафиксировать решение без&nbsp;лишнего ожидания, проходит через
+              юридические ограничения, не&nbsp;перегружает человека в&nbsp;чувствительном сценарии и&nbsp;при этом
+              может быть быстро запущен как MVP у&nbsp;клиентов.
+            </p>
+            <p>
+              Гипотеза звучала так: если дать пользователю понятный и&nbsp;безопасный способ забронировать
+              квартиру онлайн, можно сократить потери между выбором лота и&nbsp;следующей стадией сделки.
+            </p>
+            <p>
+              Эта гипотеза опиралась на&nbsp;CJM, JTBD, бенчмаркинг и&nbsp;desk research: было видно, что
+              пользователь готов совершать значимые шаги онлайн, если продукт даёт ощущение контроля,
+              прозрачности и&nbsp;надёжности.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-booking-v2__section reveal" aria-labelledby="strategy-title">
+          <h2 class="case-booking-v2__section-title" id="strategy-title">Стратегия <span class="case-booking-v2__section-index">04</span></h2>
+          <div class="case-booking-v2__section-content">
+            <p>
+              Я собрала минимально достаточный MVP: только те шаги, без&nbsp;которых бронирование не&nbsp;работает ни&nbsp;для пользователя, ни&nbsp;для бизнеса, ни&nbsp;юридически. Всё вторичное — убрано или
+              отложено в&nbsp;следующие итерации.
+            </p>
+            <p>
+              В&nbsp;первой версии сфокусировалась на&nbsp;трёх задачах: дать пользователю возможность
+              зафиксировать решение без&nbsp;лишнего ожидания, пройти через юридические ограничения без&nbsp;критического роста трения и&nbsp;запустить рабочий MVP у&nbsp;клиентов как можно быстрее.
+            </p>
+            <p>
+              Часть настроек админки мы сознательно перенесли в&nbsp;следующие итерации: запуск был ценнее
+              идеальной полноты, если команда понимала, что критично для&nbsp;первой версии.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-booking-v2__section reveal" aria-labelledby="solution-title">
+          <h2 class="case-booking-v2__section-title" id="solution-title">Решение <span class="case-booking-v2__section-index">05</span></h2>
+          <div class="case-booking-v2__section-content case-booking-v2__section-content--stacked">
+            <p>
+              Я выстроила последовательный путь: выбор квартиры → ввод данных → оплата → статус
+              брони. Ключевым принципом была прозрачность: на&nbsp;каждом шаге пользователь понимает,
+              что происходит сейчас, зачем это нужно и&nbsp;что будет дальше.
+            </p>
+            <p>
+              Главным UX-решением стало распознавание паспортных данных вместо ручного ввода.
+              Рассматривали альтернативу — разбить ввод на&nbsp;больше шагов. Отказались: это увеличивало
+              количество экранов и&nbsp;когнитивную нагрузку.
+            </p>
+            <p>
+              Распознавание уже работало в&nbsp;проде в&nbsp;другом флоу — его можно было встроить без&nbsp;больших
+              затрат и&nbsp;с доказанной устойчивостью. Чтобы снизить тревожность, я добавила счётчик
+              шагов — он делал сценарий конечным и&nbsp;управляемым. В&nbsp;дорогой транзакции это не&nbsp;декоративный элемент, а&nbsp;способ поддержать ощущение контроля.
+            </p>
+            <p>
+              Отдельно я проработала слой доверия: условия брони, сумму оплаты, обработку ошибок,
+              сохранение контекста и&nbsp;статус после платежа. В&nbsp;подобных сценариях пользователь оценивает
+              не&nbsp;только удобство, но&nbsp;и то, насколько продукт выглядит надёжным в&nbsp;момент, когда просит
+              деньги и&nbsp;данные.
+            </p>
+            <p>
+              Чтобы не&nbsp;терять незавершённые сессии, сценарий был связан с&nbsp;операционным контуром:
+              система создавала лид и&nbsp;передавала его менеджеру. Это сохраняло ценность даже когда
+              бронирование не&nbsp;было завершено.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-booking-v2__section reveal" aria-labelledby="validation-title">
+          <h2 class="case-booking-v2__section-title" id="validation-title">Валидация <span class="case-booking-v2__section-index">06</span></h2>
+          <div class="case-booking-v2__section-content">
+            <p>
+              Перед релизом сценарий прошёл юзабилити-тестирование с&nbsp;реальными пользователями на&nbsp;десктопе и&nbsp;адаптиве. По&nbsp;итогам доработали неоднозначные места в&nbsp;логике — прежде всего
+              переходы между шагами и&nbsp;формулировки на&nbsp;юридически значимых экранах.
+            </p>
+            <p>
+              Визуально проработали три направления и&nbsp;выбрали наиболее чистый и&nbsp;минималистичный
+              вариант: он лучше всего поддерживал сценарий оплаты и&nbsp;снижал ощущение тяжести на&nbsp;критичных шагах.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-booking-v2__result reveal" aria-labelledby="result-title">
+          <div class="case-booking-v2__section">
+            <h2 class="case-booking-v2__section-title" id="result-title">Результат <span class="case-booking-v2__section-index">07</span></h2>
+            <div class="case-booking-v2__section-content">
+              <p>
+                Через 8 месяцев после запуска (апрель–декабрь 2025): конверсия из&nbsp;заявки в&nbsp;онлайн-бронирование — 10% (канал запущен с&nbsp;нуля); каждый второй, кто оформил
+                бронирование онлайн, перешёл к&nbsp;договору; общая конверсия из&nbsp;заявки в&nbsp;бронь выросла
+                на&nbsp;4%.
+              </p>
+              <p>
+                Конверсия в&nbsp;договор частично зависит от&nbsp;рынка — это важно учитывать при&nbsp;интерпретации.
+                Но&nbsp;операционный эффект очевиден: сценарий работает в&nbsp;реальных продажах, фиксирует
+                намерение в&nbsp;момент принятия решения и&nbsp;сокращает ручной разрыв между выбором лота и&nbsp;следующей стадией сделки.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-booking-v2__screens">
+            <div class="case-booking-v2__screen">
+              <div class="case-booking-v2__screen-copy">
+                <p class="case-booking-v2__screen-title">Авторизация</p>
+              </div>
+              <div class="case-booking-v2__screen-media">
+                <img
+                  src="../../assets/case-booking-step-auth.png"
+                  alt="Экран авторизации в&nbsp;сценарии онлайн-бронирования"
+                  width="1632"
+                  height="861"
+                >
+              </div>
+            </div>
+
+            <div class="case-booking-v2__screen">
+              <div class="case-booking-v2__screen-copy">
+                <p class="case-booking-v2__screen-title">Выбор типа бронирования</p>
+              </div>
+              <div class="case-booking-v2__screen-media">
+                <img
+                  src="../../assets/case-booking-step-type.png"
+                  alt="Экран выбора типа бронирования"
+                  width="1567"
+                  height="822"
+                >
+              </div>
+            </div>
+
+            <div class="case-booking-v2__screen">
+              <div class="case-booking-v2__screen-copy">
+                <p class="case-booking-v2__screen-title">Заполнение данных</p>
+              </div>
+              <div class="case-booking-v2__screen-media">
+                <img
+                  src="../../assets/case-booking-step-data.png"
+                  alt="Экран заполнения данных для&nbsp;онлайн-бронирования"
+                  width="1632"
+                  height="861"
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="case-booking-v2__pager reveal" aria-label="Навигация по кейсам">
+          <a class="case-booking-v2__back" href="../../index.html" aria-label="Назад на главную">← Назад</a>
+          <a class="case-booking-v2__next" href="../documents-in-deal/index.html" aria-label="Открыть следующий кейс">Следующий кейс →</a>
+        </nav>
+      </div>
+    </main>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>
+
