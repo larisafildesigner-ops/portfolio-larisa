@@ -1,6 +1,148 @@
 (function () {
   const root = document.documentElement;
   const body = document.body;
+  const content = window.PORTFOLIO_CONTENT;
+
+  const getValueByPath = (source, path) => {
+    return path.split(".").reduce((accumulator, part) => {
+      if (accumulator == null) return undefined;
+      return accumulator[part];
+    }, source);
+  };
+
+  const setMetaContent = (selector, value) => {
+    if (!value) return;
+    const element = document.querySelector(selector);
+    if (element) {
+      element.setAttribute("content", value);
+    }
+  };
+
+  const renderSimpleBindings = () => {
+    document.querySelectorAll("[data-content]").forEach((element) => {
+      const value = getValueByPath(content, element.getAttribute("data-content"));
+      if (typeof value === "string") {
+        element.textContent = value;
+      }
+    });
+
+    document.querySelectorAll("[data-content-html]").forEach((element) => {
+      const value = getValueByPath(content, element.getAttribute("data-content-html"));
+      if (typeof value === "string") {
+        element.innerHTML = value;
+      }
+    });
+
+    document.querySelectorAll("[data-content-href]").forEach((element) => {
+      const value = getValueByPath(content, element.getAttribute("data-content-href"));
+      if (typeof value === "string") {
+        element.setAttribute("href", value);
+      }
+    });
+
+    document.querySelectorAll("[data-content-src]").forEach((element) => {
+      const value = getValueByPath(content, element.getAttribute("data-content-src"));
+      if (typeof value === "string") {
+        element.setAttribute("src", value);
+      }
+    });
+
+    document.querySelectorAll("[data-content-alt]").forEach((element) => {
+      const value = getValueByPath(content, element.getAttribute("data-content-alt"));
+      if (typeof value === "string") {
+        element.setAttribute("alt", value);
+      }
+    });
+
+    document.querySelectorAll("[data-content-width]").forEach((element) => {
+      const value = getValueByPath(content, element.getAttribute("data-content-width"));
+      if (value != null) {
+        element.setAttribute("width", String(value));
+      }
+    });
+
+    document.querySelectorAll("[data-content-height]").forEach((element) => {
+      const value = getValueByPath(content, element.getAttribute("data-content-height"));
+      if (value != null) {
+        element.setAttribute("height", String(value));
+      }
+    });
+  };
+
+  const renderCollection = (templateId, targetSelector, items, renderer) => {
+    const template = document.getElementById(templateId);
+    const target = document.querySelector(targetSelector);
+    if (!template || !target || !Array.isArray(items)) return;
+
+    target.innerHTML = "";
+
+    items.forEach((item) => {
+      const fragment = template.content.cloneNode(true);
+      renderer(fragment, item);
+      target.appendChild(fragment);
+    });
+  };
+
+  const renderHomePage = () => {
+    if (!content || !body.classList.contains("page--portfolio-home")) return;
+
+    document.title = content.site.pageTitle;
+    setMetaContent('meta[name="description"]', content.site.pageDescription);
+    setMetaContent('meta[property="og:title"]', content.site.ogTitle);
+    setMetaContent('meta[property="og:description"]', content.site.ogDescription);
+    setMetaContent('meta[property="og:url"]', content.site.siteUrl || window.location.href);
+
+    renderSimpleBindings();
+
+    renderCollection("portfolio-nav-item-template", "[data-content-nav]", content.navigation, (fragment, item) => {
+      const link = fragment.querySelector("a");
+      link.setAttribute("href", item.href);
+      link.textContent = item.label;
+    });
+
+    renderCollection("portfolio-about-paragraph-template", "[data-content-about]", content.about.paragraphs, (fragment, paragraphText) => {
+      fragment.querySelector("p").textContent = paragraphText;
+    });
+
+    renderCollection("portfolio-experience-item-template", "[data-content-experience]", content.experience.items, (fragment, item) => {
+      const listItem = fragment.querySelector(".experience-v3__item");
+      fragment.querySelector(".experience-v3__period").textContent = item.period;
+      fragment.querySelector(".experience-v3__role").textContent = item.role;
+
+      if (item.size && item.size !== "default") {
+        listItem.classList.add(`experience-v3__item--${item.size}`);
+      }
+    });
+
+    renderCollection("portfolio-work-card-template", "[data-content-works]", content.works.items, (fragment, item) => {
+      const card = fragment.querySelector(".project-card-v3");
+      const media = fragment.querySelector(".project-card-v3__media");
+      const image = fragment.querySelector("img");
+
+      card.classList.add(`project-card-v3--${item.cardSize}`);
+      media.classList.add(`project-card-v3__media--${item.cardSize}`);
+      card.setAttribute("href", item.href);
+      card.setAttribute("aria-label", item.ariaLabel);
+      image.setAttribute("src", item.imageSrc);
+      image.setAttribute("alt", item.imageAlt);
+      image.setAttribute("width", String(item.imageWidth));
+      image.setAttribute("height", String(item.imageHeight));
+      fragment.querySelector(".project-card-v3__title").textContent = item.title;
+    });
+
+    renderCollection("portfolio-contact-item-template", "[data-content-contacts]", content.contacts.items, (fragment, item) => {
+      const link = fragment.querySelector("a");
+      link.setAttribute("href", item.href);
+      link.textContent = item.label;
+
+      if (item.newTab) {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noreferrer");
+      }
+    });
+  };
+
+  renderHomePage();
 
   if (window.location.hash.includes("figmacapture=")) {
     root.setAttribute("data-capture", "true");

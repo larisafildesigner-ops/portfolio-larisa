@@ -8,28 +8,65 @@
     <meta property="og:title" content="Лариса Филипповская — product designer">
     <meta property="og:description" content="Главная страница портфолио: обо мне, опыт, избранные работы и&nbsp;контакты.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com/portfolio/">
+    <meta property="og:url" content="https://larisafildesigner-ops.github.io/portfolio-larisa/">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="./styles.css">
-    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
   </head>
   <body class="page--portfolio-home page--portfolio-home-v3">
     <main class="portfolio-shell-v3">
       <header class="portfolio-header-v3" aria-label="Шапка сайта">
         <div class="portfolio-header-v3__identity">
-          <a class="portfolio-header-v3__brand" href="./index.html" aria-label="Лариса Филипповская, главная">
+          <a class="portfolio-header-v3__brand" href="./index.html" aria-label="Лариса Филипповская, главная" data-content="site.ownerName">
             Лариса Филипповская
           </a>
-          <a class="portfolio-header-v3__cv" href="./assets/larisa-filippovskaya-cv.pdf" download aria-label="Скачать резюме Ларисы Филипповской">
-            <span>Резюме</span>
+          <a class="portfolio-header-v3__cv" href="./assets/larisa-filippovskaya-cv.pdf" download aria-label="Скачать резюме Ларисы Филипповской" data-content-href="site.cvHref">
+            <span data-content="site.cvLabel">Резюме</span>
           </a>
         </div>
-        <nav class="portfolio-header-v3__nav" aria-label="Основная навигация">
+        <nav class="portfolio-header-v3__nav" aria-label="Основная навигация" data-content-nav>
           <a href="#about">Обо мне</a>
           <a href="#works">Работы</a>
           <a href="#contact">Контакты</a>
         </nav>
       </header>
+
+      <template id="portfolio-nav-item-template">
+        <a href="#"></a>
+      </template>
+
+      <template id="portfolio-work-card-template">
+        <a class="project-card-v3" href="#">
+          <div class="project-card-v3__media">
+            <img
+              src=""
+              alt=""
+              width="0"
+              height="0"
+            >
+          </div>
+          <div class="project-card-v3__content">
+            <h3 class="project-card-v3__title"></h3>
+          </div>
+        </a>
+      </template>
+
+      <template id="portfolio-contact-item-template">
+        <a href="#"></a>
+      </template>
+
+      <template id="portfolio-experience-item-template">
+        <li class="experience-v3__item">
+          <div class="experience-v3__marker" aria-hidden="true"></div>
+          <div class="experience-v3__entry">
+            <p class="experience-v3__period"></p>
+            <p class="experience-v3__role"></p>
+          </div>
+        </li>
+      </template>
+
+      <template id="portfolio-about-paragraph-template">
+        <p></p>
+      </template>
 
       <section class="portfolio-main-v3" aria-labelledby="hero-title">
         <div class="portfolio-hero-v3">
@@ -74,19 +111,23 @@
             <div class="portfolio-hero-v3__copy">
               <h1 class="portfolio-h1-v3" id="hero-title">
                 <span class="portfolio-h1-v3__line portfolio-h1-v3__line--signature">
-                  <span>Привет! Я</span>
+                  <span data-content="hero.intro">Привет! Я</span>
                   <span class="portfolio-h1-v3__name">
-                    Лариса
+                    <span data-content="hero.firstName">Лариса</span>
                     <img
                       class="portfolio-h1-v3__badge"
                       src="./assets/hero-avatar-chip-v3.png"
                       alt="Портрет Ларисы Филипповской"
                       width="416"
                       height="475"
+                      data-content-src="hero.badgeSrc"
+                      data-content-alt="hero.badgeAlt"
+                      data-content-width="hero.badgeWidth"
+                      data-content-height="hero.badgeHeight"
                     >
                     <span class="portfolio-h1-v3__punctuation">,</span>
                   </span>
-                  <span>продуктовый дизайнер с&nbsp;опытом в&nbsp;<em>B2B</em></span>
+                  <span data-content-html="hero.suffix">продуктовый дизайнер <span class="portfolio-h1-v3__nowrap">с&nbsp;опытом</span> <span class="portfolio-h1-v3__nowrap">в&nbsp;<em>B2B</em></span></span>
                 </span>
               </h1>
             </div>
@@ -97,21 +138,19 @@
       <div class="portfolio-content-v3">
         <section class="portfolio-section-v3 reveal" id="about" aria-labelledby="about-title">
           <div class="portfolio-section-v3__title">
-            <h2 class="portfolio-h3-v3" id="about-title">Обо мне <span class="portfolio-h3-v3__index">01</span></h2>
+            <h2 class="portfolio-h3-v3" id="about-title"><span data-content="about.title">Обо мне</span> <span class="portfolio-h3-v3__index">01</span></h2>
           </div>
           <div class="portfolio-section-v3__content">
-            <div class="portfolio-copy-v3">
-              <p>Я продуктовый дизайнер с&nbsp;опытом в&nbsp;B2B и&nbsp;сложных сервисах.</p>
-              <p>Проектирую сценарии, в&nbsp;которых важно одновременно учитывать цели бизнеса, ограничения системы и&nbsp;логику пользователя.</p>
-              <p>Умею собирать MVP, выделять критический путь и&nbsp;доводить решение до&nbsp;запуска в&nbsp;продакшен.</p>
-              <p>Работаю на&nbsp;стыке UX, продуктового мышления и&nbsp;системного подхода: от&nbsp;исследования и&nbsp;структуры до&nbsp;качества реализации.</p>
-              <p>Поддерживаю и&nbsp;развиваю дизайн-системы, чтобы продукт масштабировался без&nbsp;потери целостности.</p>
-              <p>В&nbsp;работе опираюсь на&nbsp;данные, пользовательский контекст и&nbsp;использую AI-инструменты там, где они реально повышают скорость и&nbsp;качество.</p>
+            <div class="portfolio-copy-v3" data-content-about>
+              <p>Я продуктовый дизайнер с&nbsp;опытом 4+ года в&nbsp;B2B и&nbsp;сложных сервисах.</p>
+              <p>Проектирую сценарии на&nbsp;стыке бизнес-целей, системных ограничений и&nbsp;пользовательской логики. Умею собирать MVP, выделять критический путь и&nbsp;доводить решения до&nbsp;запуска в&nbsp;продакшен.</p>
+              <p>Работаю с&nbsp;продуктом системно: от&nbsp;структуры и&nbsp;ключевых пользовательских сценариев до&nbsp;качества реализации и&nbsp;развития дизайн-системы. Проектирую так, чтобы продукт можно было масштабировать без потери целостности.</p>
+              <p>В&nbsp;работе опираюсь на&nbsp;данные, пользовательский контекст и&nbsp;AI-инструменты там, где они действительно помогают ускорять процесс и&nbsp;повышать качество решений.</p>
             </div>
 
             <section class="experience-v3" aria-labelledby="experience-title">
-              <h3 class="experience-v3__title" id="experience-title">Мой опыт</h3>
-              <ol class="experience-v3__list">
+              <h3 class="experience-v3__title" id="experience-title" data-content="experience.title">Мой опыт</h3>
+              <ol class="experience-v3__list" data-content-experience>
                 <li class="experience-v3__item">
                   <div class="experience-v3__marker" aria-hidden="true"></div>
                   <div class="experience-v3__entry">
@@ -141,8 +180,8 @@
         </section>
 
         <section class="works-v3 reveal" id="works" aria-labelledby="works-title">
-          <h2 class="portfolio-h3-v3" id="works-title">Работы <span class="portfolio-h3-v3__index">02</span></h2>
-          <div class="works-v3__grid">
+          <h2 class="portfolio-h3-v3" id="works-title"><span data-content="works.title">Работы</span> <span class="portfolio-h3-v3__index">02</span></h2>
+          <div class="works-v3__grid" data-content-works>
             <a class="project-card-v3 project-card-v3--small" href="./work/documents-in-deal/index.html" aria-label="Открыть кейс Документы в&nbsp;сделке застройщика">
               <div class="project-card-v3__media project-card-v3__media--small">
                 <img
@@ -157,17 +196,17 @@
               </div>
             </a>
 
-            <a class="project-card-v3 project-card-v3--large" href="./work/paid-booking/index.html" aria-label="Открыть кейс Онлайн-бронирование на&nbsp;сайте застройщика">
+            <a class="project-card-v3 project-card-v3--large" href="./work/paid-booking/index.html" aria-label="Открыть кейс Онлайн-бронирование для&nbsp;застройщика">
               <div class="project-card-v3__media project-card-v3__media--large">
                 <img
                   src="./assets/project-booking-main-v4.png"
-                  alt="Превью кейса Онлайн-бронирование на&nbsp;сайте застройщика"
+                  alt="Превью кейса Онлайн-бронирование для&nbsp;застройщика"
                   width="1642"
                   height="1133"
                 >
               </div>
               <div class="project-card-v3__content">
-                <h3 class="project-card-v3__title">Онлайн-бронирование на&nbsp;сайте застройщика</h3>
+                <h3 class="project-card-v3__title">Онлайн-бронирование для&nbsp;застройщика</h3>
               </div>
             </a>
           </div>
@@ -175,17 +214,17 @@
 
         <footer class="contacts-v3 reveal" id="contact">
           <div class="contacts-v3__title">
-            <h2 class="portfolio-h3-v3">Контакты <span class="portfolio-h3-v3__index">03</span></h2>
+            <h2 class="portfolio-h3-v3"><span data-content="contacts.title">Контакты</span> <span class="portfolio-h3-v3__index">03</span></h2>
           </div>
-          <address class="contacts-v3__links">
+          <address class="contacts-v3__links" data-content-contacts>
             <a href="mailto:larisafildesigner@gmail.com">larisafildesigner@gmail.com</a>
             <a href="https://www.behance.net/6451c714" target="_blank" rel="noreferrer">Behance</a>
-            <a href="https://t.me/username" target="_blank" rel="noreferrer">Telegram</a>
           </address>
         </footer>
       </div>
     </main>
 
+    <script src="./content/site-content.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
