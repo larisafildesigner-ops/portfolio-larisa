@@ -3019,7 +3019,13 @@ body.page--case-booking-v2 {
 }
 
 .page--case-documents-v1 .case-documents-v1__section-content--stacked > p + ul {
-  margin-top: -16px;
+  margin-top: 0;
+}
+
+.page--case-documents-v1 .case-documents-v1__section-callout {
+  display: grid;
+  gap: 8px;
+  padding-top: 24px;
 }
 
 .page--case-documents-v1 .case-documents-v1__screen-note {
