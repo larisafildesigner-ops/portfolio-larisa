@@ -128,6 +128,7 @@
       image.setAttribute("width", String(item.imageWidth));
       image.setAttribute("height", String(item.imageHeight));
       fragment.querySelector(".project-card-v3__title").textContent = item.title;
+      fragment.querySelector(".project-card-v3__description").textContent = item.description;
     });
 
     renderCollection("portfolio-contact-item-template", "[data-content-contacts]", content.contacts.items, (fragment, item) => {
@@ -277,4 +278,113 @@
       });
     });
   });
+
+  const initCaseLightbox = () => {
+    if (
+      !body.classList.contains("page--case-booking-v2") &&
+      !body.classList.contains("page--case-documents-v1")
+    ) {
+      return;
+    }
+
+    const imageSelector = [
+      ".case-booking-v2__hero-media img",
+      ".case-booking-v2__screen-media img",
+      ".case-documents-v1__hero-media img",
+      ".case-documents-v1__screen-media img"
+    ].join(", ");
+
+    const images = Array.from(document.querySelectorAll(imageSelector));
+    if (!images.length) return;
+
+    const overlay = document.createElement("div");
+    overlay.className = "case-lightbox";
+    overlay.setAttribute("hidden", "");
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.innerHTML = `
+      <div class="case-lightbox__backdrop" data-lightbox-close></div>
+      <div class="case-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+        <button class="case-lightbox__close" type="button" aria-label="Закрыть просмотр" data-lightbox-close>&times;</button>
+        <button class="case-lightbox__nav case-lightbox__nav--prev" type="button" aria-label="Предыдущее изображение" data-lightbox-prev>
+          <span aria-hidden="true">&#8249;</span>
+        </button>
+        <figure class="case-lightbox__figure">
+          <img class="case-lightbox__image" src="" alt="">
+        </figure>
+        <button class="case-lightbox__nav case-lightbox__nav--next" type="button" aria-label="Следующее изображение" data-lightbox-next>
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const overlayImage = overlay.querySelector(".case-lightbox__image");
+    const closeButtons = overlay.querySelectorAll("[data-lightbox-close]");
+    const prevButton = overlay.querySelector("[data-lightbox-prev]");
+    const nextButton = overlay.querySelector("[data-lightbox-next]");
+    let activeIndex = 0;
+
+    const syncImage = () => {
+      const current = images[activeIndex];
+      if (!current) return;
+      overlayImage.setAttribute("src", current.getAttribute("src") || "");
+      overlayImage.setAttribute("alt", current.getAttribute("alt") || "");
+    };
+
+    const openLightbox = (index) => {
+      activeIndex = index;
+      syncImage();
+      overlay.hidden = false;
+      overlay.setAttribute("aria-hidden", "false");
+      body.classList.add("is-lightbox-open");
+    };
+
+    const closeLightbox = () => {
+      overlay.hidden = true;
+      overlay.setAttribute("aria-hidden", "true");
+      body.classList.remove("is-lightbox-open");
+    };
+
+    const stepLightbox = (direction) => {
+      activeIndex = (activeIndex + direction + images.length) % images.length;
+      syncImage();
+    };
+
+    images.forEach((image, index) => {
+      image.classList.add("case-lightbox__trigger");
+      image.setAttribute("tabindex", "0");
+      image.setAttribute("role", "button");
+      image.setAttribute("aria-label", "Открыть изображение на весь экран");
+
+      image.addEventListener("click", () => openLightbox(index));
+      image.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLightbox(index);
+        }
+      });
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closeLightbox);
+    });
+
+    prevButton.addEventListener("click", () => stepLightbox(-1));
+    nextButton.addEventListener("click", () => stepLightbox(1));
+
+    document.addEventListener("keydown", (event) => {
+      if (overlay.hidden) return;
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      } else if (event.key === "ArrowLeft") {
+        stepLightbox(-1);
+      } else if (event.key === "ArrowRight") {
+        stepLightbox(1);
+      }
+    });
+  };
+
+  initCaseLightbox();
 })();
