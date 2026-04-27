@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const root = document.documentElement;
   const body = document.body;
   const content = window.PORTFOLIO_CONTENT;
@@ -119,8 +119,11 @@
       const media = fragment.querySelector(".project-card-v3__media");
       const image = fragment.querySelector("img");
 
-      card.classList.add(`project-card-v3--${item.cardSize}`);
-      media.classList.add(`project-card-v3__media--${item.cardSize}`);
+      if (item.cardSize) {
+        card.classList.add(`project-card-v3--${item.cardSize}`);
+        media.classList.add(`project-card-v3__media--${item.cardSize}`);
+      }
+
       card.setAttribute("href", item.href);
       card.setAttribute("aria-label", item.ariaLabel);
       image.setAttribute("src", item.imageSrc);
@@ -128,7 +131,20 @@
       image.setAttribute("width", String(item.imageWidth));
       image.setAttribute("height", String(item.imageHeight));
       fragment.querySelector(".project-card-v3__title").textContent = item.title;
-      fragment.querySelector(".project-card-v3__description").textContent = item.description;
+
+      const description = fragment.querySelector(".project-card-v3__description");
+      if (item.description) {
+        description.textContent = item.description;
+      } else {
+        description.remove();
+      }
+
+      const cta = fragment.querySelector(".project-card-v3__cta");
+      if (item.ctaLabel) {
+        cta.textContent = item.ctaLabel;
+      } else {
+        cta.remove();
+      }
     });
 
     renderCollection("portfolio-contact-item-template", "[data-content-contacts]", content.contacts.items, (fragment, item) => {
@@ -143,7 +159,144 @@
     });
   };
 
+  const initPortfolioDotField = () => {
+    if (!body.classList.contains("page--portfolio-home-v3") && !body.classList.contains("page--case-documents-v1") && !body.classList.contains("page--case-booking-v2")) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (reducedMotion.matches || !finePointer.matches) return;
+
+    const canvas = document.createElement("canvas");
+    canvas.className = "portfolio-dot-field";
+    canvas.setAttribute("aria-hidden", "true");
+    body.prepend(canvas);
+    body.classList.add("has-dynamic-dots");
+
+    const context = canvas.getContext("2d", { alpha: true });
+    if (!context) return;
+
+    const styles = getComputedStyle(body);
+    const dotSize = Number.parseFloat(styles.getPropertyValue("--v3-dot-size")) || Number.parseFloat(styles.getPropertyValue("--case-documents-dot-size")) || Number.parseFloat(styles.getPropertyValue("--case-dot-size")) || 24;
+    const baseColor = "rgba(46, 58, 88, 0.24)";
+    const accentColor = styles.getPropertyValue("--v3-accent").trim() || styles.getPropertyValue("--case-documents-accent").trim() || styles.getPropertyValue("--case-accent").trim() || "#fe6d52";
+    const maxRatio = 1.5;
+    const influenceRadius = 150;
+    const dots = [];
+    const pointer = {
+      x: -9999,
+      y: -9999,
+      currentX: -9999,
+      currentY: -9999,
+      previousX: -9999,
+      previousY: -9999,
+      energy: 0
+    };
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let frame = 0;
+
+    const buildGrid = () => {
+      dots.length = 0;
+      const cols = Math.ceil(width / dotSize) + 2;
+      const rows = Math.ceil(height / dotSize) + 2;
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let col = 0; col < cols; col += 1) {
+          dots.push({
+            x: col * dotSize,
+            y: row * dotSize
+          });
+        }
+      }
+    };
+
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      buildGrid();
+      draw();
+    };
+
+    const draw = () => {
+      context.clearRect(0, 0, width, height);
+      pointer.currentX += (pointer.x - pointer.currentX) * 0.16;
+      pointer.currentY += (pointer.y - pointer.currentY) * 0.16;
+      pointer.energy *= 0.9;
+
+      dots.forEach((dot) => {
+        const dx = dot.x - pointer.currentX;
+        const dy = dot.y - pointer.currentY;
+        const distance = Math.hypot(dx, dy);
+        const proximity = Math.max(0, 1 - distance / influenceRadius);
+        const eased = proximity * proximity;
+        const shift = eased * 7 * pointer.energy;
+        const angle = Math.atan2(dy, dx);
+        const x = dot.x + Math.cos(angle) * shift;
+        const y = dot.y + Math.sin(angle) * shift;
+        const radius = 1 + eased * maxRatio;
+
+        context.beginPath();
+        context.fillStyle = eased > 0.14 ? accentColor : baseColor;
+        context.globalAlpha = 0.7 + eased * 0.3;
+        context.arc(x, y, radius, 0, Math.PI * 2);
+        context.fill();
+      });
+
+      context.globalAlpha = 1;
+
+      if (pointer.energy > 0.015) {
+        frame = window.requestAnimationFrame(draw);
+      } else {
+        frame = 0;
+      }
+    };
+
+    const requestDraw = () => {
+      if (!frame) {
+        frame = window.requestAnimationFrame(draw);
+      }
+    };
+
+    const syncPointer = (event) => {
+      pointer.previousX = pointer.x;
+      pointer.previousY = pointer.y;
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
+      const distance = Math.hypot(pointer.x - pointer.previousX, pointer.y - pointer.previousY);
+      pointer.energy = Math.min(1, pointer.energy + distance / 90 + 0.18);
+      requestDraw();
+    };
+
+    const hidePointer = () => {
+      pointer.x = -9999;
+      pointer.y = -9999;
+      pointer.energy = 0.7;
+      requestDraw();
+    };
+
+    resize();
+    window.addEventListener("resize", resize, { passive: true });
+    window.addEventListener("pointermove", syncPointer, { passive: true });
+    window.addEventListener("pointerleave", hidePointer, { passive: true });
+
+    reducedMotion.addEventListener("change", (event) => {
+      if (event.matches) {
+        canvas.remove();
+        body.classList.remove("has-dynamic-dots");
+        window.cancelAnimationFrame(frame);
+      }
+    });
+  };
+
   renderHomePage();
+  initPortfolioDotField();
 
   if (window.location.hash.includes("figmacapture=")) {
     root.setAttribute("data-capture", "true");
@@ -160,7 +313,7 @@
     const syncLabel = () => {
       const isDark = root.getAttribute("data-theme") === "dark";
       toggle.setAttribute("aria-pressed", String(isDark));
-      toggle.setAttribute("aria-label", isDark ? "Переключить на светлую тему" : "Переключить на тёмную тему");
+      toggle.setAttribute("aria-label", isDark ? "Переключить на светлую тему" : "Переключить на тёмную тему");
       toggle.textContent = isDark ? "☀" : "◐";
     };
 
@@ -355,7 +508,7 @@
       image.classList.add("case-lightbox__trigger");
       image.setAttribute("tabindex", "0");
       image.setAttribute("role", "button");
-      image.setAttribute("aria-label", "Открыть изображение на весь экран");
+      image.setAttribute("aria-label", "Открыть изображение на весь экран");
 
       image.addEventListener("click", () => openLightbox(index));
       image.addEventListener("keydown", (event) => {
@@ -388,3 +541,15 @@
 
   initCaseLightbox();
 })();
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,739 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Дашборд поддержки</title>
+    <meta name="description" content="Статичная HTML-страница дашборда поддержки по&nbsp;макету Figma.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --page: #dfe2dc;
+        --card: rgb(255 255 255 / 0.6);
+        --panel: #dfe2dc;
+        --bar: #cacdc8;
+        --bar-light: #dfe2dc;
+        --track: #dfdfda;
+        --ink: #100017;
+        --heading: #1b2433;
+        --muted: rgb(16 0 23 / 0.5);
+        --green: #728e17;
+        --lime: #cdf158;
+        --red: #fd0031;
+        --red-soft: #f3b2ba;
+        --card-radius: 24px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        background: var(--page);
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: start center;
+        background: var(--page);
+        color: var(--ink);
+        font-family: Manrope, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        letter-spacing: 0;
+      }
+
+      button {
+        border: 0;
+        font: inherit;
+      }
+
+      .dashboard {
+        width: min(100vw, 1024px);
+        min-height: 615px;
+        padding: 24px;
+        border-radius: 20px;
+        background: var(--page);
+      }
+
+      .dashboard__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .dashboard__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        color: var(--heading);
+        font-size: 48px;
+        font-weight: 300;
+        line-height: 1.4;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .pill,
+      .icon-button {
+        height: 42px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pill {
+        gap: 20px;
+        min-width: 168px;
+        padding: 0 30px;
+        background: var(--lime);
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .icon-button {
+        width: 42px;
+        flex: 0 0 42px;
+        background: #fff;
+        color: var(--ink);
+      }
+
+      .icon-button--muted {
+        background: var(--panel);
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        color: currentColor;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--card-radius);
+        background: var(--card);
+        min-width: 0;
+      }
+
+      .metric-card {
+        height: 235px;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .metric-card__top,
+      .section-card__head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .metric-card h2,
+      .section-card h2 {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .metric-value {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .metric-value strong {
+        font-size: clamp(48px, 7.8vw, 80px);
+        font-weight: 300;
+        line-height: 0.92;
+        letter-spacing: 0;
+      }
+
+      .delta {
+        margin-top: 2px;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .delta--up {
+        color: var(--red);
+      }
+
+      .delta--down {
+        color: var(--green);
+      }
+
+      .chart {
+        position: relative;
+        height: 102px;
+      }
+
+      .chart__threshold {
+        position: absolute;
+        right: 0;
+        left: 0;
+        border-top: 1px dotted var(--red-soft);
+      }
+
+      .chart__threshold--neutral {
+        border-color: rgb(16 0 23 / 0.28);
+      }
+
+      .chart__threshold span {
+        position: absolute;
+        top: -16px;
+        left: 0;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .bar-chart {
+        position: absolute;
+        right: 0;
+        bottom: 18px;
+        left: 0;
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        align-items: end;
+        gap: 7px;
+      }
+
+      .bar-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-width: 0;
+      }
+
+      .bar,
+      .stack {
+        width: 100%;
+        border-radius: 7px;
+        background: var(--bar-light);
+      }
+
+      .stack {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: transparent;
+      }
+
+      .stack span:first-child {
+        border-radius: 7px 7px 0 0;
+        background: var(--bar-light);
+      }
+
+      .stack span:last-child {
+        border-radius: 0 0 7px 7px;
+        background: var(--bar);
+      }
+
+      .chart__labels {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 7px;
+        align-items: center;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .chart__labels span:nth-child(even) {
+        color: transparent;
+      }
+
+      .line-chart {
+        position: absolute;
+        inset: 0 0 18px;
+      }
+
+      .line-chart .grid-line {
+        stroke: rgb(16 0 23 / 0.28);
+        stroke-dasharray: 1.5 2;
+        stroke-width: 1;
+      }
+
+      .line-chart .trend-red {
+        fill: none;
+        stroke: var(--red);
+        stroke-width: 3;
+      }
+
+      .line-chart .trend-green {
+        fill: none;
+        stroke: var(--green);
+        stroke-width: 3;
+      }
+
+      .section-card {
+        min-height: 272px;
+        padding: 18px;
+      }
+
+      .analytics {
+        grid-column: span 2;
+      }
+
+      .section-card__body {
+        margin-top: 17px;
+      }
+
+      .tabs {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        margin: -1px 56px 20px 110px;
+        border-bottom: 1px solid rgb(16 0 23 / 0.08);
+      }
+
+      .tab {
+        position: relative;
+        padding-bottom: 8px;
+        color: rgb(16 0 23 / 0.55);
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .tab.is-active {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .tab.is-active::after {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 2px;
+        background: var(--lime);
+        content: "";
+      }
+
+      .rows {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 100px minmax(0, 1fr) 56px;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .employees .row {
+        grid-template-columns: 100px minmax(0, 1fr);
+      }
+
+      .label {
+        overflow: hidden;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .time {
+        justify-self: end;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .progress-track {
+        min-width: 0;
+        height: 27px;
+      }
+
+      .progress {
+        position: relative;
+        width: var(--w);
+        min-width: 72px;
+        height: 27px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        overflow: visible;
+        border-radius: 7px;
+        padding: 0 11px;
+        background: var(--track);
+        color: var(--ink);
+        white-space: nowrap;
+      }
+
+      .progress.is-warn {
+        background:
+          linear-gradient(180deg, rgb(224 219 215 / 0.98) 0%, #dfe2dc 72%, rgb(253 1 49 / 0.05) 100%),
+          var(--track);
+        border-bottom: 1px solid var(--red-soft);
+      }
+
+      .progress__value {
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .progress__share,
+      .progress__note {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+
+      .progress__note {
+        color: var(--muted);
+      }
+
+      .employees .section-card__body {
+        margin-top: 18px;
+      }
+
+      @media (max-width: 820px) {
+        body {
+          place-items: start stretch;
+        }
+
+        .dashboard {
+          width: 100%;
+          min-height: 100vh;
+          padding: 16px;
+          border-radius: 0;
+        }
+
+        .dashboard__header {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        h1 {
+          font-size: 40px;
+          line-height: 1.15;
+        }
+
+        .actions {
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .metric-card,
+        .section-card {
+          min-height: 0;
+          height: auto;
+        }
+
+        .analytics {
+          grid-column: auto;
+        }
+
+        .chart {
+          height: 124px;
+        }
+
+        .tabs {
+          margin: 0 0 18px;
+          gap: 18px;
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+
+        .tabs::-webkit-scrollbar {
+          display: none;
+        }
+
+        .row,
+        .employees .row {
+          grid-template-columns: 112px minmax(0, 1fr);
+        }
+
+        .analytics .time {
+          display: none;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .dashboard {
+          padding: 12px;
+        }
+
+        .pill {
+          min-width: 0;
+          padding: 0 18px;
+        }
+
+        .metric-value strong {
+          font-size: 56px;
+        }
+
+        .row,
+        .employees .row {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+
+        .label {
+          width: 100%;
+        }
+
+        .progress-track {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="dashboard" aria-labelledby="dashboard-title">
+      <div class="dashboard__inner">
+        <header class="dashboard__header">
+          <h1 id="dashboard-title">Поддержка</h1>
+          <div class="actions" aria-label="Фильтры дашборда">
+            <button class="pill" type="button">
+              <span>1-7 May 2026</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 7h9m-9 10h9m4-10h1m-1 10h1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="16.5" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="8.5" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </button>
+            <button class="icon-button" type="button" aria-label="Открыть фильтры">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 7h9m-9 10h9m4-10h1m-1 10h1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="16.5" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="8.5" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <section class="grid" aria-label="Метрики поддержки">
+          <article class="card metric-card">
+            <div class="metric-card__top">
+              <div>
+                <h2>SLA average</h2>
+                <p class="metric-value"><strong>68,5%</strong></p>
+              </div>
+              <button class="icon-button icon-button--muted" type="button" aria-label="Открыть SLA average">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 16 16 8m-6 0h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="chart" aria-label="График SLA average">
+              <svg class="line-chart" viewBox="0 0 290 84" preserveAspectRatio="none" aria-hidden="true">
+                <path class="grid-line" d="M0 24.5H290"/>
+                <path class="grid-line" d="M0 66.5H290"/>
+                <path class="trend-red" d="M0 38 22 30 54 43 92 36 146 44 178 31 224 30"/>
+                <path class="trend-green" d="M224 30 262 1 290 22"/>
+              </svg>
+              <div class="chart__threshold chart__threshold--neutral" style="top: 24px"><span>78%</span></div>
+              <div class="chart__labels">
+                <span>1 may</span><span>2023</span><span>3 may</span><span>2023</span><span>5 may</span><span>2023</span><span>7 may</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card metric-card">
+            <div class="metric-card__top">
+              <div>
+                <h2>Тикетов всего</h2>
+                <p class="metric-value"><strong>238</strong><span class="delta delta--up">+ 5%</span></p>
+              </div>
+              <button class="icon-button icon-button--muted" type="button" aria-label="Открыть тикеты всего">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 16 16 8m-6 0h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="chart" aria-label="Столбчатый график тикетов">
+              <div class="chart__threshold" style="top: 30px"><span>65</span></div>
+              <div class="bar-chart">
+                <div class="bar-item"><div class="stack" style="height: 49px"><span style="height: 23px"></span><span style="height: 26px"></span></div></div>
+                <div class="bar-item"><div class="stack" style="height: 59px"><span style="height: 20px"></span><span style="height: 39px"></span></div></div>
+                <div class="bar-item"><div class="stack" style="height: 81px"><span style="height: 46px"></span><span style="height: 35px"></span></div></div>
+                <div class="bar-item"><div class="stack" style="height: 80px"><span style="height: 34px"></span><span style="height: 46px"></span></div></div>
+                <div class="bar-item"><div class="stack" style="height: 72px"><span style="height: 34px"></span><span style="height: 38px"></span></div></div>
+                <div class="bar-item"><div class="stack" style="height: 59px"><span style="height: 34px"></span><span style="height: 25px"></span></div></div>
+                <div class="bar-item"><div class="stack" style="height: 96px"><span style="height: 71px"></span><span style="height: 25px"></span></div></div>
+              </div>
+              <div class="chart__labels">
+                <span>1 may</span><span>2023</span><span>3 may</span><span>2023</span><span>5 may</span><span>2023</span><span>7 may</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card metric-card">
+            <div class="metric-card__top">
+              <div>
+                <h2>Зависших тикетов</h2>
+                <p class="metric-value"><strong>75</strong><span class="delta delta--down">- 10%</span></p>
+              </div>
+              <button class="icon-button icon-button--muted" type="button" aria-label="Открыть зависшие тикеты">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 16 16 8m-6 0h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="chart" aria-label="График зависших тикетов">
+              <div class="chart__threshold" style="top: 25px"><span>20</span></div>
+              <div class="bar-chart">
+                <div class="bar-item"><div class="bar" style="height: 67px"></div></div>
+                <div class="bar-item"><div class="bar" style="height: 39px"></div></div>
+                <div class="bar-item"><div class="bar" style="height: 28px"></div></div>
+                <div class="bar-item"><div class="bar" style="height: 24px"></div></div>
+                <div class="bar-item"><div class="bar" style="height: 21px"></div></div>
+                <div class="bar-item"><div class="bar" style="height: 21px"></div></div>
+                <div class="bar-item"><div class="bar" style="height: 32px"></div></div>
+              </div>
+              <div class="chart__labels">
+                <span>1 may</span><span>2023</span><span>3 may</span><span>2023</span><span>5 may</span><span>2023</span><span>7 may</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card section-card analytics">
+            <div class="section-card__head">
+              <h2>Аналитика</h2>
+              <button class="icon-button icon-button--muted" type="button" aria-label="Открыть аналитику">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 16 16 8m-6 0h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="section-card__body">
+              <nav class="tabs" aria-label="Разрез аналитики">
+                <span class="tab">Проект</span>
+                <span class="tab">Категория</span>
+                <span class="tab is-active">Тикеты</span>
+                <span class="tab">SLA</span>
+                <span class="tab">FCR</span>
+              </nav>
+              <div class="rows">
+                <div class="row">
+                  <p class="label">Разработка</p>
+                  <div class="progress-track"><div class="progress" style="--w: 100%"><span class="progress__value">412</span><span class="progress__share">30,1%</span></div></div>
+                  <p class="time">22,3 ч</p>
+                </div>
+                <div class="row">
+                  <p class="label">Методисты</p>
+                  <div class="progress-track"><div class="progress" style="--w: 35%"><span class="progress__value">304</span><span class="progress__share">22,2%</span></div></div>
+                  <p class="time">22,0 ч</p>
+                </div>
+                <div class="row">
+                  <p class="label">Аналитика</p>
+                  <div class="progress-track"><div class="progress" style="--w: 17%"><span class="progress__value">218</span><span class="progress__share">15,9%</span></div></div>
+                  <p class="time">22,3 ч</p>
+                </div>
+                <div class="row">
+                  <p class="label">Администрация</p>
+                  <div class="progress-track"><div class="progress is-warn" style="--w: 32%"><span class="progress__value">176</span><span class="progress__share">12,9%</span><span class="progress__note">больше нормы на&nbsp;10%</span></div></div>
+                  <p class="time">22,0 ч</p>
+                </div>
+                <div class="row">
+                  <p class="label">Финансы</p>
+                  <div class="progress-track"><div class="progress" style="--w: 16%"><span class="progress__value">151</span><span class="progress__share">11,0%</span></div></div>
+                  <p class="time">19,6 ч</p>
+                </div>
+                <div class="row">
+                  <p class="label">Маркетинг</p>
+                  <div class="progress-track"><div class="progress" style="--w: 17%"><span class="progress__value">107</span><span class="progress__share">7,8%</span></div></div>
+                  <p class="time">8,0ч</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card section-card employees">
+            <div class="section-card__head">
+              <h2>Сотрудники</h2>
+              <button class="icon-button icon-button--muted" type="button" aria-label="Открыть сотрудников">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 16 16 8m-6 0h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="section-card__body rows">
+              <div class="row">
+                <p class="label">Ольга Петрова</p>
+                <div class="progress-track"><div class="progress is-warn" style="--w: 100%"><span class="progress__value">304</span><span class="progress__share">22,2%</span><span class="progress__note">высокая нагрузка</span></div></div>
+              </div>
+              <div class="row">
+                <p class="label">Максим Иванов</p>
+                <div class="progress-track"><div class="progress" style="--w: 44%"><span class="progress__value">412</span><span class="progress__share">30,1%</span></div></div>
+              </div>
+              <div class="row">
+                <p class="label">Джон Окулов</p>
+                <div class="progress-track"><div class="progress" style="--w: 31%"><span class="progress__value">218</span><span class="progress__share">15,9%</span></div></div>
+              </div>
+              <div class="row">
+                <p class="label">Семен Копылов</p>
+                <div class="progress-track"><div class="progress" style="--w: 30%"><span class="progress__value">176</span><span class="progress__share">12,9%</span></div></div>
+              </div>
+              <div class="row">
+                <p class="label">Софья Антошина</p>
+                <div class="progress-track"><div class="progress" style="--w: 31%"><span class="progress__value">176</span><span class="progress__share">12,9%</span></div></div>
+              </div>
+              <div class="row">
+                <p class="label">Игорь Константинов</p>
+                <div class="progress-track"><div class="progress is-warn" style="--w: 10%"><span class="progress__value">107</span><span class="progress__share">7,8%</span><span class="progress__note">низкая загрузка</span></div></div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+

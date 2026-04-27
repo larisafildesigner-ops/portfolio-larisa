@@ -1,0 +1,65 @@
+﻿.portfolio-button {
+  --button-text-primary: var(--portfolio-btn-text-primary, #2e3a58);
+  --button-text-inverse: var(--portfolio-btn-text-inverse, #ffffff);
+  --button-accent: var(--portfolio-btn-accent, #fe6d52);
+  --button-focus: var(--portfolio-btn-focus, #2e3a58);
+  --button-press: var(--portfolio-btn-press, #6c6e73);
+  --button-padding-x: var(--portfolio-btn-padding-x, 24px);
+  --button-padding-y: var(--portfolio-btn-padding-y, 16px);
+  --button-radius: var(--portfolio-btn-radius, 8px);
+  --button-font-size: var(--portfolio-btn-font-size, 20px);
+  --button-line-height: var(--portfolio-btn-line-height, 1.3);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: 1px solid var(--button-accent);
+  border-radius: var(--button-radius);
+  background: transparent;
+  color: var(--button-text-primary);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--button-font-size);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--button-line-height);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 90ms ease, border-color 90ms ease, color 90ms ease;
+}
+
+.page--portfolio-home-v3 .portfolio-button {
+  --button-text-primary: var(--v3-btn-text-primary);
+  --button-text-inverse: var(--v3-btn-text-inverse);
+  --button-accent: var(--v3-btn-accent);
+  --button-focus: var(--v3-btn-focus);
+  --button-press: var(--v3-btn-press);
+  --button-padding-x: var(--v3-btn-padding-x);
+  --button-padding-y: var(--v3-btn-padding-y);
+  --button-radius: var(--v3-btn-radius);
+  --button-font-size: var(--v3-btn-font-size);
+  --button-line-height: var(--v3-btn-line-height);
+}
+
+.portfolio-button--primary:hover,
+.portfolio-button--primary:focus-visible,
+.project-card-v3:hover .portfolio-button--primary,
+.project-card-v3:focus-visible .portfolio-button--primary {
+  background: var(--button-accent);
+  border-color: var(--button-accent);
+  color: var(--button-text-inverse);
+}
+
+.portfolio-button--primary:focus-visible {
+  border-color: var(--button-focus);
+  outline: 2px solid var(--button-focus);
+  outline-offset: 6px;
+}
+
+.portfolio-button--primary:active {
+  background: transparent;
+  border-color: var(--button-press);
+  color: var(--button-text-primary);
+}
+
