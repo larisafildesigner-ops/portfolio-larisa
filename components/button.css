@@ -14,12 +14,12 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  padding: var(--button-padding-y) var(--button-padding-x);
+  padding: calc(var(--button-padding-y) + 2px) var(--button-padding-x) calc(var(--button-padding-y) - 2px);
   border: 1px solid var(--button-accent);
   border-radius: var(--button-radius);
   background: transparent;
   color: var(--button-text-primary);
-  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--mono-font);
   font-size: var(--button-font-size);
   font-style: normal;
   font-weight: 400;
@@ -42,6 +42,11 @@
   --button-line-height: var(--v3-btn-line-height);
 }
 
+.portfolio-button span {
+  display: inline-block;
+  transform: translateY(0.06em);
+}
+
 .portfolio-button--primary:hover,
 .portfolio-button--primary:focus-visible,
 .project-card-v3:hover .portfolio-button--primary,
@@ -62,4 +67,7 @@
   border-color: var(--button-press);
   color: var(--button-text-primary);
 }
+
+
+
 
