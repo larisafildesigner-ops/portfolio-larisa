@@ -2047,6 +2047,7 @@ html:has(body.page--portfolio-home-v3) {
 
 .page--portfolio-home-v3 .project-card-v3__cta {
   flex: 0 0 auto;
+  align-self: flex-start;
 }
 
 .page--portfolio-home-v3 .project-card-v3__description {
@@ -2440,6 +2441,11 @@ html:has(body.page--portfolio-home-v3) {
 
   .page--portfolio-home-v3 .project-card-v3__content {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__text {
+    width: 100%;
   }
 
 
