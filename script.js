@@ -166,133 +166,61 @@
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
     if (reducedMotion.matches || !finePointer.matches) return;
 
-    const canvas = document.createElement("canvas");
-    canvas.className = "portfolio-dot-field";
-    canvas.setAttribute("aria-hidden", "true");
-    body.prepend(canvas);
-    body.classList.add("has-dynamic-dots");
+    const blob = document.createElement("div");
+    blob.className = "portfolio-ambient-blob";
+    blob.setAttribute("aria-hidden", "true");
+    body.prepend(blob);
 
-    const context = canvas.getContext("2d", { alpha: true });
-    if (!context) return;
-
-    const styles = getComputedStyle(body);
-    const dotSize = Number.parseFloat(styles.getPropertyValue("--v3-dot-size")) || Number.parseFloat(styles.getPropertyValue("--case-documents-dot-size")) || Number.parseFloat(styles.getPropertyValue("--case-dot-size")) || 24;
-    const baseColor = "rgba(46, 58, 88, 0.24)";
-    const accentColor = styles.getPropertyValue("--v3-accent").trim() || styles.getPropertyValue("--case-documents-accent").trim() || styles.getPropertyValue("--case-accent").trim() || "#fe6d52";
-    const maxRatio = 1.5;
-    const influenceRadius = 150;
-    const dots = [];
-    const pointer = {
-      x: -9999,
-      y: -9999,
-      currentX: -9999,
-      currentY: -9999,
-      previousX: -9999,
-      previousY: -9999,
-      energy: 0
-    };
-    let width = 0;
-    let height = 0;
-    let dpr = 1;
+    let currentX = window.innerWidth * 0.72;
+    let currentY = window.innerHeight * 0.32;
+    let targetX = currentX;
+    let targetY = currentY;
+    let visible = false;
     let frame = 0;
+    blob.classList.add("is-coral");
 
-    const buildGrid = () => {
-      dots.length = 0;
-      const cols = Math.ceil(width / dotSize) + 2;
-      const rows = Math.ceil(height / dotSize) + 2;
+    const drawBlob = () => {
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      const rotation = Math.sin(currentX * 0.006 + currentY * 0.004) * 12;
 
-      for (let row = 0; row < rows; row += 1) {
-        for (let col = 0; col < cols; col += 1) {
-          dots.push({
-            x: col * dotSize,
-            y: row * dotSize
-          });
-        }
-      }
-    };
+      blob.style.transform = `translate3d(${currentX - 180}px, ${currentY - 140}px, 0) rotate(${rotation}deg) scale(${visible ? 1 : 0.9})`;
 
-    const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      buildGrid();
-      draw();
-    };
-
-    const draw = () => {
-      context.clearRect(0, 0, width, height);
-      pointer.currentX += (pointer.x - pointer.currentX) * 0.16;
-      pointer.currentY += (pointer.y - pointer.currentY) * 0.16;
-      pointer.energy *= 0.9;
-
-      dots.forEach((dot) => {
-        const dx = dot.x - pointer.currentX;
-        const dy = dot.y - pointer.currentY;
-        const distance = Math.hypot(dx, dy);
-        const proximity = Math.max(0, 1 - distance / influenceRadius);
-        const eased = proximity * proximity;
-        const shift = eased * 7 * pointer.energy;
-        const angle = Math.atan2(dy, dx);
-        const x = dot.x + Math.cos(angle) * shift;
-        const y = dot.y + Math.sin(angle) * shift;
-        const radius = 1 + eased * maxRatio;
-
-        context.beginPath();
-        context.fillStyle = eased > 0.14 ? accentColor : baseColor;
-        context.globalAlpha = 0.7 + eased * 0.3;
-        context.arc(x, y, radius, 0, Math.PI * 2);
-        context.fill();
-      });
-
-      context.globalAlpha = 1;
-
-      if (pointer.energy > 0.015) {
-        frame = window.requestAnimationFrame(draw);
+      if (Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
+        frame = window.requestAnimationFrame(drawBlob);
       } else {
         frame = 0;
       }
     };
 
-    const requestDraw = () => {
-      if (!frame) {
-        frame = window.requestAnimationFrame(draw);
-      }
+    const requestBlobFrame = () => {
+      if (!frame) frame = window.requestAnimationFrame(drawBlob);
     };
 
-    const syncPointer = (event) => {
-      pointer.previousX = pointer.x;
-      pointer.previousY = pointer.y;
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
-      const distance = Math.hypot(pointer.x - pointer.previousX, pointer.y - pointer.previousY);
-      pointer.energy = Math.min(1, pointer.energy + distance / 90 + 0.18);
-      requestDraw();
+    const showBlob = (event) => {
+      visible = true;
+      targetX = event.clientX;
+      targetY = event.clientY;
+      blob.style.opacity = "1";
+      requestBlobFrame();
     };
 
-    const hidePointer = () => {
-      pointer.x = -9999;
-      pointer.y = -9999;
-      pointer.energy = 0.7;
-      requestDraw();
+    const hideBlob = () => {
+      visible = false;
+      blob.style.opacity = "0";
+      requestBlobFrame();
     };
 
-    resize();
-    window.addEventListener("resize", resize, { passive: true });
-    window.addEventListener("pointermove", syncPointer, { passive: true });
-    window.addEventListener("pointerleave", hidePointer, { passive: true });
+    window.addEventListener("pointermove", showBlob, { passive: true });
+    window.addEventListener("pointerleave", hideBlob, { passive: true });
 
     reducedMotion.addEventListener("change", (event) => {
       if (event.matches) {
-        canvas.remove();
-        body.classList.remove("has-dynamic-dots");
+        blob.remove();
         window.cancelAnimationFrame(frame);
       }
     });
+
   };
 
   renderHomePage();

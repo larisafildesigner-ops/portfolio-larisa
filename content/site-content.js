@@ -12,8 +12,8 @@
     siteUrl: "https://larisafildesigner-ops.github.io/portfolio-larisa/"
   },
   navigation: [
+    { href: "#works", label: "Кейсы" },
     { href: "#about", label: "Обо мне" },
-    { href: "#works", label: "Работы" },
     { href: "#contact", label: "Контакты" }
   ],
   hero: {
@@ -57,13 +57,12 @@
     ]
   },
   works: {
-    title: "Работы",
+    title: "Кейсы",
     items: [
       {
         href: "./work/paid-booking/index.html",
         ariaLabel: "Открыть кейс Онлайн-бронирование для застройщика",
         title: "Онлайн-бронирование для застройщика",
-        description: "Спроектировала с нуля платное онлайн-бронирование квартиры для сайта застройщика — новый цифровой шаг между выбором лота и следующей стадией сделки",
         ctaLabel: "Посмотреть кейс",
         imageSrc: "./assets/work-card-booking.png",
         imageAlt: "Превью кейса Онлайн-бронирование для застройщика",
@@ -74,8 +73,6 @@
         href: "./work/documents-in-deal/index.html",
         ariaLabel: "Открыть кейс Документы в сделке застройщика",
         title: "Документы в сделке застройщика",
-        description:
-          "Как я переработала сложный сценарий работы с договорами в B2B-системе и помогла увеличить использование функциональности",
         ctaLabel: "Посмотреть кейс",
         imageSrc: "./assets/work-card-documents.png",
         imageAlt: "Превью кейса Документы в сделке застройщика",

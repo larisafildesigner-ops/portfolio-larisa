@@ -1509,8 +1509,7 @@ body.page--portfolio-home-v3 {
   --v3-section-index-size: 20px;
   margin: 0;
   background-color: var(--v3-bg);
-  background-image: radial-gradient(circle, var(--v3-dot-color) 1px, transparent 1px);
-  background-size: var(--v3-dot-size) var(--v3-dot-size);
+  background-image: none;
   color: var(--v3-text-primary);
   overflow-x: hidden;
   overflow-y: auto;
@@ -1520,17 +1519,33 @@ html:has(body.page--portfolio-home-v3) {
   overflow-y: auto;
 }
 
-body.page--portfolio-home-v3.has-dynamic-dots {
-  background-image: none;
+.portfolio-ambient-blob {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 360px;
+  height: 280px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 34% 38%, var(--blob-core, rgb(254 109 82 / 0.36)), transparent 62%),
+    radial-gradient(circle at 68% 60%, var(--blob-glow, rgb(254 163 146 / 0.24)), transparent 58%);
+  border-radius: 58% 42% 61% 39% / 47% 56% 44% 53%;
+  filter: blur(54px);
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) rotate(0deg) scale(0.9);
+  transition: opacity 220ms ease;
+  will-change: transform, opacity;
 }
 
-.portfolio-dot-field {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
+.portfolio-ambient-blob.is-warm {
+  --blob-core: rgb(255 214 84 / 0.34);
+  --blob-glow: rgb(255 112 173 / 0.24);
+}
+
+.portfolio-ambient-blob.is-coral {
+  --blob-core: rgb(254 109 82 / 0.36);
+  --blob-glow: rgb(254 163 146 / 0.24);
 }
 
 .page--portfolio-home-v3 .portfolio-shell-v3 {
@@ -1859,6 +1874,18 @@ body.page--portfolio-home-v3.has-dynamic-dots {
   margin-top: var(--v3-hero-to-content-gap);
 }
 
+.page--portfolio-home-v3 #works {
+  order: 1;
+}
+
+.page--portfolio-home-v3 #about {
+  order: 2;
+}
+
+.page--portfolio-home-v3 #contact {
+  order: 3;
+}
+
 .page--portfolio-home-v3 .portfolio-section-v3 {
   display: grid;
   grid-template-columns: 403px 901px;
@@ -2006,7 +2033,7 @@ body.page--portfolio-home-v3.has-dynamic-dots {
 
 .page--portfolio-home-v3 .project-card-v3__content {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--v3-space-16);
   width: 100%;
 }
@@ -2492,13 +2519,8 @@ body.page--case-booking-v2 {
   --case-metric-size: 52px;
   margin: 0;
   background-color: var(--case-bg);
-  background-image: radial-gradient(circle, var(--case-dot-color) 1px, transparent 1px);
-  background-size: var(--case-dot-size) var(--case-dot-size);
-  color: var(--case-text-primary);
-}
-
-body.page--case-booking-v2.has-dynamic-dots {
   background-image: none;
+  color: var(--case-text-primary);
 }
 
 .page--case-booking-v2 .case-booking-v2 {
@@ -2528,7 +2550,7 @@ body.page--case-booking-v2.has-dynamic-dots {
   justify-content: flex-start;
   padding: 0;
   position: relative;
-  background: var(--case-bg);
+  background: transparent;
   border: 0;
   box-shadow: none;
   backdrop-filter: none;
@@ -2549,6 +2571,7 @@ body.page--case-booking-v2.has-dynamic-dots {
   align-items: center;
   gap: 8px;
   color: var(--case-accent);
+  background: transparent;
   text-decoration: none;
   flex: 0 1 auto;
 }
@@ -2912,13 +2935,8 @@ body.page--case-booking-v2.has-dynamic-dots {
   --case-documents-metric-size: 52px;
   margin: 0;
   background-color: var(--case-documents-bg);
-  background-image: radial-gradient(circle, var(--case-documents-dot-color) 1px, transparent 1px);
-  background-size: var(--case-documents-dot-size) var(--case-documents-dot-size);
-  color: var(--case-documents-text-primary);
-}
-
-.page--case-documents-v1.has-dynamic-dots {
   background-image: none;
+  color: var(--case-documents-text-primary);
 }
 
 .page--case-documents-v1 .case-documents-v1 {
@@ -2950,6 +2968,11 @@ body.page--case-booking-v2.has-dynamic-dots {
   justify-content: flex-start;
   padding: 0;
   position: relative;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .page--case-documents-v1 .case-documents-v1__back,
@@ -2968,6 +2991,7 @@ body.page--case-booking-v2.has-dynamic-dots {
   align-items: center;
   gap: 8px;
   color: var(--case-documents-accent);
+  background: transparent;
   text-decoration: none;
   flex: 0 1 auto;
 }
