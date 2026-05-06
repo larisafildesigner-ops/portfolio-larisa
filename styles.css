@@ -2536,7 +2536,7 @@ html:has(body.page--portfolio-home-v3) {
 @media (max-width: 479px) {
   body.page--portfolio-home-v3 {
     --v3-hero-offset-top: 36px;
-    --v3-hero-title-size: 56px;
+    --v3-hero-title-size: 50px;
     --v3-hero-badge-min: 44px;
     --v3-hero-badge-max: 56px;
     --v3-body-size: 18px;
