@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" fill="#f4f4f4"/>
+  <circle cx="32" cy="32" r="11" fill="#fe6d52" opacity="0.72"/>
+  <circle cx="32" cy="32" r="19" fill="#fea392" opacity="0.28"/>
+  <circle cx="32" cy="32" r="27" fill="#fed2cb" opacity="0.12"/>
+  <filter id="soft">
+    <feGaussianBlur stdDeviation="3"/>
+  </filter>
+  <g filter="url(#soft)">
+    <circle cx="32" cy="32" r="10" fill="#fe6d52" opacity="0.76"/>
+    <circle cx="32" cy="32" r="18" fill="#fea392" opacity="0.26"/>
+  </g>
+</svg>

@@ -83,6 +83,61 @@
     });
   };
 
+  const splitTextForRollingHover = (element) => {
+    if (element.querySelector(".portfolio-header-v3__nav-letter")) return;
+
+    const text = element.textContent.trim();
+    if (!text) return;
+
+    element.setAttribute("aria-label", text);
+    element.textContent = "";
+
+    Array.from(text).forEach((letter, index) => {
+      const span = document.createElement("span");
+      span.className = "portfolio-header-v3__nav-letter";
+      span.setAttribute("aria-hidden", "true");
+      span.style.setProperty("--letter-index", index);
+
+      const track = document.createElement("span");
+      track.className = "portfolio-header-v3__nav-letter-track";
+
+      const current = document.createElement("span");
+      current.className = "portfolio-header-v3__nav-letter-face";
+      current.textContent = letter === " " ? "\u00a0" : letter;
+
+      const next = document.createElement("span");
+      next.className = "portfolio-header-v3__nav-letter-face";
+      next.textContent = letter === " " ? "\u00a0" : letter;
+
+      track.append(current, next);
+      span.appendChild(track);
+      element.appendChild(span);
+    });
+  };
+
+  const initHeaderRollingHover = () => {
+    const supportsRollingHover =
+      body.classList.contains("page--portfolio-home-v3") ||
+      body.classList.contains("page--case-documents-v1") ||
+      body.classList.contains("page--case-booking-v2");
+
+    if (!supportsRollingHover) return;
+
+    document
+      .querySelectorAll(
+        [
+          ".portfolio-header-v3__cv",
+          ".portfolio-header-v3__nav a",
+          ".contacts-v3__links a",
+          ".case-booking-v2__back span:not(.case-back-chevron)",
+          ".case-booking-v2__next span:not(.case-next-chevron)",
+          ".case-documents-v1__back span:not(.case-back-chevron)",
+          ".case-documents-v1__next span:not(.case-next-chevron)"
+        ].join(", ")
+      )
+      .forEach(splitTextForRollingHover);
+  };
+
   const renderHomePage = () => {
     if (!content || !body.classList.contains("page--portfolio-home")) return;
 
@@ -224,6 +279,7 @@
   };
 
   renderHomePage();
+  initHeaderRollingHover();
   initPortfolioDotField();
 
   if (window.location.hash.includes("figmacapture=")) {
