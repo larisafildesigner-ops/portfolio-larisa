@@ -170,17 +170,27 @@
     });
 
     renderCollection("portfolio-work-card-template", "[data-content-works]", content.works.items, (fragment, item) => {
-      const card = fragment.querySelector(".project-card-v3");
+      let card = fragment.querySelector(".project-card-v3");
       const media = fragment.querySelector(".project-card-v3__media");
-      const image = fragment.querySelector("img");
+      let image = fragment.querySelector("img");
 
       if (item.cardSize) {
         card.classList.add(`project-card-v3--${item.cardSize}`);
         media.classList.add(`project-card-v3__media--${item.cardSize}`);
       }
 
-      card.setAttribute("href", item.href);
-      card.setAttribute("aria-label", item.ariaLabel);
+      if (item.href) {
+        card.setAttribute("href", item.href);
+        card.setAttribute("aria-label", item.ariaLabel);
+      } else {
+        const staticCard = document.createElement("div");
+        staticCard.className = card.className;
+        staticCard.innerHTML = card.innerHTML;
+        card.replaceWith(staticCard);
+        card = staticCard;
+        image = card.querySelector("img");
+      }
+
       image.setAttribute("src", item.imageSrc);
       image.setAttribute("alt", item.imageAlt);
       image.setAttribute("width", String(item.imageWidth));

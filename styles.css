@@ -1984,17 +1984,18 @@ html:has(body.page--portfolio-home-v3) {
   display: grid;
   grid-template-columns: 12px minmax(0, 1fr);
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .page--portfolio-home-v3 .experience-v3__marker {
   position: relative;
   width: 12px;
-  height: 60px;
+  height: 100%;
+  min-height: 60px;
 }
 
 .page--portfolio-home-v3 .experience-v3__item--long .experience-v3__marker {
-  height: 112px;
+  min-height: 112px;
 }
 
 .page--portfolio-home-v3 .experience-v3__marker::before {
@@ -2837,11 +2838,12 @@ body.page--case-booking-v2 {
 }
 
 .page--case-booking-v2 .case-booking-v2__metric strong {
-  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", "Roboto Mono", monospace;
   font-size: var(--case-metric-size);
   line-height: 1.3;
-  letter-spacing: 1.04px;
+  letter-spacing: 0;
   font-weight: 400;
+  font-variant-numeric: tabular-nums;
   color: var(--case-text-primary);
 }
 
@@ -3267,11 +3269,12 @@ body.page--case-booking-v2 {
   opacity: 0.28;
   transform: translateY(10px);
   transition: opacity 420ms ease, transform 420ms ease;
-  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", "Roboto Mono", monospace;
   font-size: var(--case-documents-metric-size);
   line-height: 1.3;
-  letter-spacing: 1.04px;
+  letter-spacing: 0;
   font-weight: 400;
+  font-variant-numeric: tabular-nums;
   color: var(--case-documents-text-primary);
 }
 
