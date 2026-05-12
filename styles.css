@@ -1,6 +1,3 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap");
-@import url("./components/button.css");
-
 :root {
   color-scheme: light;
   --site-text-primary: #2e3a58;
@@ -12,7 +9,7 @@
   --portfolio-btn-press: #6c6e73;
   --portfolio-btn-padding-x: 24px;
   --portfolio-btn-padding-y: 16px;
-  --portfolio-btn-radius: 8px;
+  --portfolio-btn-radius: 60px;
   --portfolio-btn-font-size: 20px;
   --portfolio-btn-line-height: 1.3;
   --figjam-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Cpath d='M5.5 3.75c-.56 0-1.02.46-1.02 1.02v16.7c0 .9 1.08 1.35 1.72.72l3.93-3.9 2.9 5.15c.27.48.88.65 1.36.38l1.79-1.01c.48-.27.65-.88.38-1.36l-2.91-5.18h5.57c.92 0 1.35-1.11.69-1.73L6.22 4.03a1.02 1.02 0 0 0-.72-.28Z' fill='white' stroke='%23fe6d52' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -1573,10 +1570,13 @@ html:has(body.page--portfolio-home-v3) {
 .page--portfolio-home-v3 .portfolio-header-v3__cv,
 .page--portfolio-home-v3 .portfolio-header-v3__nav a,
 .page--portfolio-home-v3 .contacts-v3__links a,
+.page--portfolio-home-v3 .contacts-v3__copy,
+.page--portfolio-home-v3 .contacts-v3__text,
 .page--portfolio-home-v3 .portfolio-copy-v3 p,
 .page--portfolio-home-v3 .experience-v3__title,
 .page--portfolio-home-v3 .experience-v3__period,
 .page--portfolio-home-v3 .experience-v3__role,
+.page--portfolio-home-v3 .project-card-v3__chip,
 .page--portfolio-home-v3 .project-card-v3__title,
 .page--portfolio-home-v3 .project-card-v3__description {
   font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -1587,7 +1587,9 @@ html:has(body.page--portfolio-home-v3) {
 .page--portfolio-home-v3 .portfolio-header-v3__brand,
 .page--portfolio-home-v3 .portfolio-header-v3__cv,
 .page--portfolio-home-v3 .portfolio-header-v3__nav a,
-.page--portfolio-home-v3 .contacts-v3__links a {
+.page--portfolio-home-v3 .contacts-v3__links a,
+.page--portfolio-home-v3 .contacts-v3__copy,
+.page--portfolio-home-v3 .contacts-v3__text {
   font-size: var(--v3-body-size);
   line-height: 1.3;
   text-decoration: none;
@@ -1705,6 +1707,8 @@ html:has(body.page--portfolio-home-v3) {
 .page--portfolio-home-v3 .portfolio-header-v3__nav a:focus-visible .portfolio-header-v3__nav-letter-track,
 .page--portfolio-home-v3 .contacts-v3__links a:hover .portfolio-header-v3__nav-letter-track,
 .page--portfolio-home-v3 .contacts-v3__links a:focus-visible .portfolio-header-v3__nav-letter-track,
+.page--portfolio-home-v3 .project-card-v3__cta:hover .portfolio-header-v3__nav-letter-track,
+.page--portfolio-home-v3 .project-card-v3__cta:focus-visible .portfolio-header-v3__nav-letter-track,
 .page--case-booking-v2 .case-booking-v2__back:hover .portfolio-header-v3__nav-letter-track,
 .page--case-booking-v2 .case-booking-v2__back:focus-visible .portfolio-header-v3__nav-letter-track,
 .page--case-booking-v2 .case-booking-v2__next:hover .portfolio-header-v3__nav-letter-track,
@@ -1730,6 +1734,11 @@ html:has(body.page--portfolio-home-v3) {
 
 .page--portfolio-home-v3 .contacts-v3__links a {
   position: relative;
+}
+
+.page--portfolio-home-v3 .contacts-v3__copy {
+  appearance: none;
+  cursor: pointer;
 }
 
 .page--portfolio-home-v3 .contacts-v3__links a::after {
@@ -2042,16 +2051,19 @@ html:has(body.page--portfolio-home-v3) {
 
 .page--portfolio-home-v3 .project-card-v3 {
   display: grid;
-  gap: var(--v3-space-16);
+  gap: var(--v3-space-24);
   color: inherit;
   text-decoration: none;
   position: relative;
 }
 
 .page--portfolio-home-v3 .project-card-v3__media {
+  display: block;
   width: 100%;
   aspect-ratio: 3960 / 1572;
   overflow: hidden;
+  color: inherit;
+  text-decoration: none;
 }
 
 .page--portfolio-home-v3 .project-card-v3__media img {
@@ -2064,6 +2076,7 @@ html:has(body.page--portfolio-home-v3) {
 .page--portfolio-home-v3 .project-card-v3__content {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--v3-space-16);
   width: 100%;
 }
@@ -2075,9 +2088,45 @@ html:has(body.page--portfolio-home-v3) {
   min-width: 0;
 }
 
+.page--portfolio-home-v3 .project-card-v3__title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page--portfolio-home-v3 .project-card-v3__actions,
+.page--portfolio-home-v3 .project-card-v3__chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page--portfolio-home-v3 .project-card-v3__actions {
+  flex: 0 0 auto;
+}
+
+.page--portfolio-home-v3 .project-card-v3__chips {
+  flex-wrap: wrap;
+}
+
+.page--portfolio-home-v3 .project-card-v3__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 24px;
+  border: 1px solid var(--v3-btn-focus);
+  border-radius: var(--v3-btn-radius);
+  color: var(--v3-text-primary);
+  font-family: var(--mono-font);
+  font-size: var(--v3-btn-font-size);
+  line-height: var(--v3-btn-line-height);
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+}
+
 .page--portfolio-home-v3 .project-card-v3__cta {
   flex: 0 0 auto;
-  align-self: flex-start;
 }
 
 .page--portfolio-home-v3 .project-card-v3__description {
@@ -2086,19 +2135,58 @@ html:has(body.page--portfolio-home-v3) {
 
 .page--portfolio-home-v3 .contacts-v3 {
   display: grid;
-  grid-template-columns: 403px 837px;
+  grid-template-columns: 403px minmax(0, 1fr);
   align-items: baseline;
 }
 
 .page--portfolio-home-v3 .contacts-v3__links {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  align-items: baseline;
-  justify-content: space-between;
-  column-gap: 24px;
-  row-gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: stretch;
+  gap: 40px;
+  width: 100%;
   margin: 0;
   font-style: normal;
+}
+
+.page--portfolio-home-v3 .contacts-v3__links a,
+.page--portfolio-home-v3 .contacts-v3__copy,
+.page--portfolio-home-v3 .contacts-v3__text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--v3-text-primary);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--v3-body-size);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.page--portfolio-home-v3 .contacts-v3__links a:hover,
+.page--portfolio-home-v3 .contacts-v3__copy:hover {
+  background: transparent;
+  color: var(--v3-accent);
+}
+
+.page--portfolio-home-v3 .contacts-v3__links a:focus-visible,
+.page--portfolio-home-v3 .contacts-v3__copy:focus-visible {
+  background: transparent;
+  color: var(--v3-accent);
+  outline: 2px solid var(--v3-accent);
+  outline-offset: 4px;
+}
+
+.page--portfolio-home-v3 .contacts-v3__links a:active,
+.page--portfolio-home-v3 .contacts-v3__copy:active {
+  background: transparent;
+  color: var(--v3-accent);
 }
 
 .page--portfolio-home-v3 .portfolio-header-v3__brand,
@@ -2403,15 +2491,8 @@ html:has(body.page--portfolio-home-v3) {
 
 
   .page--portfolio-home-v3 .contacts-v3__links {
-    grid-template-columns: repeat(3, max-content);
     justify-content: flex-start;
-    column-gap: 32px;
-    row-gap: 12px;
     margin-top: 12px;
-  }
-
-  .page--portfolio-home-v3 .contacts-v3__links a:first-child {
-    grid-column: auto;
   }
 }
 
@@ -2515,22 +2596,48 @@ html:has(body.page--portfolio-home-v3) {
     max-width: var(--v3-hero-badge-max);
   }
 
+  .page--portfolio-home-v3 .project-card-v3 {
+    gap: var(--v3-space-16);
+  }
+
   .page--portfolio-home-v3 .project-card-v3__content {
+    order: 2;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__media {
+    order: 1;
   }
 
   .page--portfolio-home-v3 .project-card-v3__text {
     width: 100%;
   }
 
+  .page--portfolio-home-v3 .project-card-v3__actions {
+    flex-wrap: wrap;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__actions .project-card-v3__cta {
+    order: 1;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__actions .project-card-v3__chips {
+    order: 2;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3--static .project-card-v3__chip--concept {
+    order: -1;
+  }
 
   .page--portfolio-home-v3 .contacts-v3__links {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    column-gap: 0;
-    row-gap: 12px;
+    gap: 12px;
+    width: 100%;
     margin-top: 0;
+    margin-left: 0;
   }
 }
 
@@ -2600,6 +2707,8 @@ html:has(body.page--portfolio-home-v3) {
   .page--portfolio-home-v3 .portfolio-header-v3__nav a:focus-visible .portfolio-header-v3__nav-letter-track,
   .page--portfolio-home-v3 .contacts-v3__links a:hover .portfolio-header-v3__nav-letter-track,
   .page--portfolio-home-v3 .contacts-v3__links a:focus-visible .portfolio-header-v3__nav-letter-track,
+  .page--portfolio-home-v3 .project-card-v3__cta:hover .portfolio-header-v3__nav-letter-track,
+  .page--portfolio-home-v3 .project-card-v3__cta:focus-visible .portfolio-header-v3__nav-letter-track,
   .page--case-booking-v2 .case-booking-v2__back:hover .portfolio-header-v3__nav-letter-track,
   .page--case-booking-v2 .case-booking-v2__back:focus-visible .portfolio-header-v3__nav-letter-track,
   .page--case-booking-v2 .case-booking-v2__next:hover .portfolio-header-v3__nav-letter-track,

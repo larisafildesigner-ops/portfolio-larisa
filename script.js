@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const root = document.documentElement;
   const body = document.body;
   const content = window.PORTFOLIO_CONTENT;
@@ -129,6 +129,7 @@
           ".portfolio-header-v3__cv",
           ".portfolio-header-v3__nav a",
           ".contacts-v3__links a",
+          ".project-card-v3__cta",
           ".case-booking-v2__back span:not(.case-back-chevron)",
           ".case-booking-v2__next span:not(.case-next-chevron)",
           ".case-documents-v1__back span:not(.case-back-chevron)",
@@ -172,6 +173,8 @@
     renderCollection("portfolio-work-card-template", "[data-content-works]", content.works.items, (fragment, item) => {
       let card = fragment.querySelector(".project-card-v3");
       const media = fragment.querySelector(".project-card-v3__media");
+      const titleLink = fragment.querySelector(".project-card-v3__title-link");
+      const chips = fragment.querySelector(".project-card-v3__chips");
       let image = fragment.querySelector("img");
 
       if (item.cardSize) {
@@ -179,41 +182,80 @@
         media.classList.add(`project-card-v3__media--${item.cardSize}`);
       }
 
-      if (item.href) {
-        card.setAttribute("href", item.href);
-        card.setAttribute("aria-label", item.ariaLabel);
-      } else {
-        const staticCard = document.createElement("div");
-        staticCard.className = card.className;
-        staticCard.innerHTML = card.innerHTML;
-        card.replaceWith(staticCard);
-        card = staticCard;
-        image = card.querySelector("img");
-      }
-
       image.setAttribute("src", item.imageSrc);
+      if (item.imageSrcSet) {
+        image.setAttribute("srcset", item.imageSrcSet);
+        image.setAttribute("sizes", "(max-width: 719px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 48px), (max-width: 1439px) calc(100vw - 80px), 1320px");
+      }
       image.setAttribute("alt", item.imageAlt);
       image.setAttribute("width", String(item.imageWidth));
       image.setAttribute("height", String(item.imageHeight));
+      image.loading = "lazy";
+      image.decoding = "async";
       fragment.querySelector(".project-card-v3__title").textContent = item.title;
 
-      const description = fragment.querySelector(".project-card-v3__description");
-      if (item.description) {
-        description.textContent = item.description;
+      if (item.href) {
+        media.setAttribute("href", item.href);
+        media.setAttribute("aria-label", item.ariaLabel);
+        titleLink.setAttribute("href", item.href);
       } else {
-        description.remove();
+        card.classList.add("project-card-v3--static");
+        const staticMedia = document.createElement("div");
+        staticMedia.className = media.className;
+        staticMedia.innerHTML = media.innerHTML;
+        media.replaceWith(staticMedia);
+        image = staticMedia.querySelector("img");
+        const title = titleLink.querySelector(".project-card-v3__title");
+        titleLink.replaceWith(title);
       }
 
       const cta = fragment.querySelector(".project-card-v3__cta");
-      if (item.ctaLabel) {
+      if (item.href && item.ctaLabel) {
+        cta.setAttribute("href", item.href);
         cta.textContent = item.ctaLabel;
       } else {
         cta.remove();
+      }
+
+      if (Array.isArray(item.chips) && item.chips.length > 0) {
+        chips.setAttribute("aria-label", "Теги кейса");
+        item.chips.forEach((chip) => {
+          const element = document.createElement("span");
+          element.className = "project-card-v3__chip";
+          if (chip === "Концепт") {
+            element.classList.add("project-card-v3__chip--concept");
+          }
+          element.textContent = chip;
+          chips.append(element);
+        });
+      } else {
+        chips.remove();
       }
     });
 
     renderCollection("portfolio-contact-item-template", "[data-content-contacts]", content.contacts.items, (fragment, item) => {
       const link = fragment.querySelector("a");
+
+      if (item.text || (!item.href && !item.copyValue)) {
+        const text = document.createElement("span");
+        text.className = "contacts-v3__text";
+        text.textContent = item.label;
+        link.replaceWith(text);
+        return;
+      }
+
+      if (item.copyValue) {
+        const button = document.createElement("button");
+        button.className = "contacts-v3__copy";
+        button.type = "button";
+        button.textContent = item.label;
+        button.dataset.copyValue = item.copyValue;
+        button.dataset.defaultLabel = item.label;
+        button.dataset.copiedLabel = item.copiedLabel || "Скопировано";
+        link.replaceWith(button);
+        return;
+      }
+
       link.setAttribute("href", item.href);
       link.textContent = item.label;
 
@@ -221,6 +263,48 @@
         link.setAttribute("target", "_blank");
         link.setAttribute("rel", "noreferrer");
       }
+    });
+  };
+
+  const initContactCopy = () => {
+    const copyButtons = document.querySelectorAll("[data-copy-value]");
+    if (!copyButtons.length) return;
+
+    const copyText = async (value) => {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(value);
+        return;
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = value;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.top = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      textarea.remove();
+    };
+
+    copyButtons.forEach((button) => {
+      let resetTimer;
+      const defaultLabel = button.dataset.defaultLabel || button.textContent;
+      const copiedLabel = button.dataset.copiedLabel || "Скопировано";
+      button.style.minWidth = `${button.offsetWidth}px`;
+
+      button.addEventListener("click", async () => {
+        try {
+          await copyText(button.dataset.copyValue);
+          button.textContent = copiedLabel;
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(() => {
+            button.textContent = defaultLabel;
+          }, 2000);
+        } catch (error) {
+          button.textContent = defaultLabel;
+        }
+      });
     });
   };
 
@@ -290,6 +374,7 @@
 
   renderHomePage();
   initHeaderRollingHover();
+  initContactCopy();
   initPortfolioDotField();
 
   if (window.location.hash.includes("figmacapture=")) {

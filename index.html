@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="utf-8">
@@ -11,6 +11,11 @@
     <meta property="og:url" content="https://larisafildesigner-ops.github.io/portfolio-larisa/">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap"></noscript>
+    <link rel="stylesheet" href="./components/button.css">
     <link rel="stylesheet" href="./styles.css">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -50,23 +55,29 @@
       </template>
 
       <template id="portfolio-work-card-template">
-        <a class="project-card-v3" href="#">
-          <div class="project-card-v3__media">
+        <div class="project-card-v3">
+          <div class="project-card-v3__content">
+            <div class="project-card-v3__text">
+              <a class="project-card-v3__title-link" href="#">
+                <h3 class="project-card-v3__title"></h3>
+              </a>
+            </div>
+            <div class="project-card-v3__actions">
+              <div class="project-card-v3__chips"></div>
+              <a class="portfolio-button portfolio-button--primary project-card-v3__cta" href="#">Посмотреть кейс</a>
+            </div>
+          </div>
+          <a class="project-card-v3__media" href="#">
             <img
               src=""
               alt=""
               width="0"
               height="0"
+              loading="lazy"
+              decoding="async"
             >
-          </div>
-          <div class="project-card-v3__content">
-            <div class="project-card-v3__text">
-              <h3 class="project-card-v3__title"></h3>
-              <p class="project-card-v3__description"></p>
-            </div>
-            <span class="portfolio-button portfolio-button--primary project-card-v3__cta">Посмотреть кейс</span>
-          </div>
-        </a>
+          </a>
+        </div>
       </template>
 
       <template id="portfolio-contact-item-template">
@@ -144,6 +155,8 @@
                         data-content-alt="hero.badgeAlt"
                         data-content-width="hero.badgeWidth"
                         data-content-height="hero.badgeHeight"
+                        decoding="async"
+                        fetchpriority="high"
                       >
                     </span>
                   </span>
@@ -202,53 +215,86 @@
         <section class="works-v3 reveal" id="works" aria-labelledby="works-title">
           <h2 class="portfolio-h3-v3" id="works-title"><span data-content="works.title">Кейсы</span> <span class="portfolio-h3-v3__index">01</span></h2>
           <div class="works-v3__grid" data-content-works>
-            <a class="project-card-v3" href="./work/paid-booking/index.html" aria-label="Открыть кейс Онлайн-бронирование для&nbsp;застройщика">
-              <div class="project-card-v3__media">
+            <div class="project-card-v3">
+              <div class="project-card-v3__content">
+                <div class="project-card-v3__text">
+                  <a class="project-card-v3__title-link" href="./work/paid-booking/index.html">
+                    <h3 class="project-card-v3__title">Онлайн-бронирование для&nbsp;застройщика</h3>
+                  </a>
+                </div>
+                <div class="project-card-v3__actions">
+                  <div class="project-card-v3__chips" aria-label="Теги кейса">
+                    <span class="project-card-v3__chip">B2B</span>
+                    <span class="project-card-v3__chip">B2C</span>
+                  </div>
+                  <a class="portfolio-button portfolio-button--primary project-card-v3__cta" href="./work/paid-booking/index.html">Посмотреть кейс</a>
+                </div>
+              </div>
+              <a class="project-card-v3__media" href="./work/paid-booking/index.html" aria-label="Открыть кейс Онлайн-бронирование для&nbsp;застройщика">
                 <img
                   src="./assets/work-card-booking.png"
+                  srcset="./assets/work-card-booking-1980.png 1980w, ./assets/work-card-booking-2640.png 2640w, ./assets/work-card-booking.png 3960w"
+                  sizes="(max-width: 719px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 48px), (max-width: 1439px) calc(100vw - 80px), 1320px"
                   alt="Превью кейса Онлайн-бронирование для&nbsp;застройщика"
                   width="3960"
                   height="1572"
+                  loading="lazy"
+                  decoding="async"
                 >
-              </div>
+              </a>
+            </div>
+
+            <div class="project-card-v3">
               <div class="project-card-v3__content">
                 <div class="project-card-v3__text">
-                  <h3 class="project-card-v3__title">Онлайн-бронирование для&nbsp;застройщика</h3>
+                  <a class="project-card-v3__title-link" href="./work/documents-in-deal/index.html">
+                    <h3 class="project-card-v3__title">Документы в&nbsp;сделке застройщика</h3>
+                  </a>
                 </div>
-                <span class="portfolio-button portfolio-button--primary project-card-v3__cta">Посмотреть кейс</span>
+                <div class="project-card-v3__actions">
+                  <div class="project-card-v3__chips" aria-label="Теги кейса">
+                    <span class="project-card-v3__chip">B2B</span>
+                  </div>
+                  <a class="portfolio-button portfolio-button--primary project-card-v3__cta" href="./work/documents-in-deal/index.html">Посмотреть кейс</a>
+                </div>
               </div>
-            </a>
-
-            <a class="project-card-v3" href="./work/documents-in-deal/index.html" aria-label="Открыть кейс Документы в&nbsp;сделке застройщика">
-              <div class="project-card-v3__media">
+              <a class="project-card-v3__media" href="./work/documents-in-deal/index.html" aria-label="Открыть кейс Документы в&nbsp;сделке застройщика">
                 <img
                   src="./assets/work-card-documents.png"
+                  srcset="./assets/work-card-documents-1980.png 1980w, ./assets/work-card-documents-2640.png 2640w, ./assets/work-card-documents.png 3960w"
+                  sizes="(max-width: 719px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 48px), (max-width: 1439px) calc(100vw - 80px), 1320px"
                   alt="Превью кейса Документы в&nbsp;сделке застройщика"
                   width="3960"
                   height="1572"
+                  loading="lazy"
+                  decoding="async"
                 >
-              </div>
-              <div class="project-card-v3__content">
-                <div class="project-card-v3__text">
-                  <h3 class="project-card-v3__title">Документы в&nbsp;сделке застройщика</h3>
-                </div>
-                <span class="portfolio-button portfolio-button--primary project-card-v3__cta">Посмотреть кейс</span>
-              </div>
-            </a>
+              </a>
+            </div>
 
-            <div class="project-card-v3">
-              <div class="project-card-v3__media">
-                <img
-                  src="./assets/work-card-support.png"
-                  alt="Превью кейса Концепт дашборда для&nbsp;поддержки"
-                  width="3960"
-                  height="1572"
-                >
-              </div>
+            <div class="project-card-v3 project-card-v3--static">
               <div class="project-card-v3__content">
                 <div class="project-card-v3__text">
                   <h3 class="project-card-v3__title">Концепт дашборда для&nbsp;поддержки</h3>
                 </div>
+                <div class="project-card-v3__actions">
+                  <div class="project-card-v3__chips" aria-label="Теги кейса">
+                    <span class="project-card-v3__chip">B2B</span>
+                    <span class="project-card-v3__chip project-card-v3__chip--concept">Концепт</span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-card-v3__media">
+                <img
+                  src="./assets/work-card-support.png"
+                  srcset="./assets/work-card-support-1980.png 1980w, ./assets/work-card-support-2640.png 2640w, ./assets/work-card-support.png 3960w"
+                  sizes="(max-width: 719px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 48px), (max-width: 1439px) calc(100vw - 80px), 1320px"
+                  alt="Превью кейса Концепт дашборда для&nbsp;поддержки"
+                  width="3960"
+                  height="1572"
+                  loading="lazy"
+                  decoding="async"
+                >
               </div>
             </div>
           </div>
@@ -259,8 +305,9 @@
             <h2 class="portfolio-h3-v3"><span data-content="contacts.title">Контакты</span> <span class="portfolio-h3-v3__index">03</span></h2>
           </div>
           <address class="contacts-v3__links" data-content-contacts>
-            <a href="mailto:larisafildesigner@gmail.com">larisafildesigner@gmail.com</a>
+            <span class="contacts-v3__text">larisafildesigner@gmail.com</span>
             <a href="https://www.behance.net/6451c714" target="_blank" rel="noreferrer">Behance</a>
+            <a href="https://t.me/LaChaika" target="_blank" rel="noreferrer">Telegram</a>
           </address>
         </footer>
       </div>

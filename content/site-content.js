@@ -1,4 +1,4 @@
-﻿window.PORTFOLIO_CONTENT = {
+window.PORTFOLIO_CONTENT = {
   site: {
     ownerName: "Лариса Филипповская",
     pageTitle: "Лариса Филипповская — product designer",
@@ -63,8 +63,10 @@
         href: "./work/paid-booking/index.html",
         ariaLabel: "Открыть кейс Онлайн-бронирование для застройщика",
         title: "Онлайн-бронирование для застройщика",
+        chips: ["B2B", "B2C"],
         ctaLabel: "Посмотреть кейс",
         imageSrc: "./assets/work-card-booking.png",
+        imageSrcSet: "./assets/work-card-booking-1980.png 1980w, ./assets/work-card-booking-2640.png 2640w, ./assets/work-card-booking.png 3960w",
         imageAlt: "Превью кейса Онлайн-бронирование для застройщика",
         imageWidth: 3960,
         imageHeight: 1572
@@ -73,15 +75,19 @@
         href: "./work/documents-in-deal/index.html",
         ariaLabel: "Открыть кейс Документы в сделке застройщика",
         title: "Документы в сделке застройщика",
+        chips: ["B2B"],
         ctaLabel: "Посмотреть кейс",
         imageSrc: "./assets/work-card-documents.png",
+        imageSrcSet: "./assets/work-card-documents-1980.png 1980w, ./assets/work-card-documents-2640.png 2640w, ./assets/work-card-documents.png 3960w",
         imageAlt: "Превью кейса Документы в сделке застройщика",
         imageWidth: 3960,
         imageHeight: 1572
       },
       {
         title: "Концепт дашборда для поддержки",
+        chips: ["B2B", "Концепт"],
         imageSrc: "./assets/work-card-support.png",
+        imageSrcSet: "./assets/work-card-support-1980.png 1980w, ./assets/work-card-support-2640.png 2640w, ./assets/work-card-support.png 3960w",
         imageAlt: "Превью кейса Концепт дашборда для поддержки",
         imageWidth: 3960,
         imageHeight: 1572
@@ -92,7 +98,7 @@
     title: "Контакты",
     items: [
       {
-        href: "mailto:larisafildesigner@gmail.com",
+        text: true,
         label: "larisafildesigner@gmail.com"
       },
       {

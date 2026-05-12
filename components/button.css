@@ -14,11 +14,12 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  padding: calc(var(--button-padding-y) + 2px) var(--button-padding-x) calc(var(--button-padding-y) - 2px);
-  border: 1px solid var(--button-accent);
+  height: 44px;
+  padding: 0 var(--button-padding-x);
+  border: 1px solid transparent;
   border-radius: var(--button-radius);
-  background: transparent;
-  color: var(--button-text-primary);
+  background: var(--button-text-primary);
+  color: var(--button-text-inverse);
   font-family: var(--mono-font);
   font-size: var(--button-font-size);
   font-style: normal;
@@ -47,19 +48,33 @@
   transform: translateY(0.06em);
 }
 
-.portfolio-button--primary:hover,
-.portfolio-button--primary:focus-visible,
-.project-card-v3:hover .portfolio-button--primary,
-.project-card-v3:focus-visible .portfolio-button--primary {
+.portfolio-button .portfolio-header-v3__nav-letter {
+  display: inline-block;
+  transform: none;
+}
+
+.portfolio-button .portfolio-header-v3__nav-letter-track {
+  display: grid;
+  transform: none;
+}
+
+.portfolio-button .portfolio-header-v3__nav-letter-face {
+  display: block;
+  transform: none;
+}
+
+.portfolio-button--primary:hover {
   background: var(--button-accent);
   border-color: var(--button-accent);
   color: var(--button-text-inverse);
 }
 
 .portfolio-button--primary:focus-visible {
+  background: transparent;
   border-color: var(--button-focus);
+  color: var(--button-text-primary);
   outline: 2px solid var(--button-focus);
-  outline-offset: 6px;
+  outline-offset: 4px;
 }
 
 .portfolio-button--primary:active {
