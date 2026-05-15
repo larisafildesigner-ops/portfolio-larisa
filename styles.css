@@ -2615,7 +2615,22 @@ html:has(body.page--portfolio-home-v3) {
   }
 
   .page--portfolio-home-v3 .project-card-v3__actions {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__cta,
+  .page--portfolio-home-v3 .project-card-v3__chip {
+    flex: 0 0 auto;
   }
 
   .page--portfolio-home-v3 .project-card-v3__actions .project-card-v3__cta {
