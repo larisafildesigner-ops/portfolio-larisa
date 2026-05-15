@@ -2616,6 +2616,7 @@ html:has(body.page--portfolio-home-v3) {
 
   .page--portfolio-home-v3 .project-card-v3__actions {
     flex-wrap: nowrap;
+    align-items: center;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
@@ -2626,6 +2627,10 @@ html:has(body.page--portfolio-home-v3) {
 
   .page--portfolio-home-v3 .project-card-v3__actions::-webkit-scrollbar {
     display: none;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__chips {
+    flex-wrap: nowrap;
   }
 
   .page--portfolio-home-v3 .project-card-v3__cta,
@@ -2675,6 +2680,19 @@ html:has(body.page--portfolio-home-v3) {
 
   .page--portfolio-home-v3 .portfolio-header-v3__cv {
     display: none;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__cta[data-mobile-label] {
+    font-size: 0;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__cta[data-mobile-label] .portfolio-header-v3__nav-letter {
+    display: none;
+  }
+
+  .page--portfolio-home-v3 .project-card-v3__cta[data-mobile-label]::before {
+    content: attr(data-mobile-label);
+    font-size: var(--v3-btn-font-size);
   }
 }
 

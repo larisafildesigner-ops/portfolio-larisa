@@ -228,6 +228,9 @@
           element.textContent = chip;
           chips.append(element);
         });
+        if (item.mobileCtaLabel) {
+          cta.dataset.mobileLabel = item.mobileCtaLabel;
+        }
       } else {
         chips.remove();
       }
