@@ -93,6 +93,15 @@ window.PORTFOLIO_CONTENT = {
         imageAlt: "Превью кейса Концепт дашборда для поддержки",
         imageWidth: 3960,
         imageHeight: 1572
+      },
+      {
+        title: "Концепт подбора квартиры на сайте",
+        chips: ["B2C", "Концепт"],
+        imageSrc: "./assets/work-card-apartment-concept.jpg",
+        imageSrcSet: "./assets/work-card-apartment-concept-1980.jpg 1980w, ./assets/work-card-apartment-concept-2640.jpg 2640w, ./assets/work-card-apartment-concept.jpg 3960w",
+        imageAlt: "Превью концепта подбора квартиры на сайте",
+        imageWidth: 3960,
+        imageHeight: 1572
       }
     ]
   },
