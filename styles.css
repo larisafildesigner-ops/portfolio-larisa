@@ -1489,10 +1489,10 @@ body.page--portfolio-home-v3 {
   --v3-space-60: 60px;
   --v3-space-120: 120px;
   --v3-hero-to-content-gap: 48px;
-  --v3-section-gap: 96px;
+  --v3-section-gap: 100px;
   --v3-content-gap: 40px;
   --v3-works-gap: 60px;
-  --v3-work-card-gap: 120px;
+  --v3-work-card-gap: 80px;
   --v3-stacked-gap: 32px;
   --v3-page-inline: 60px;
   --v3-hero-columns: 8;
@@ -2388,10 +2388,10 @@ html:has(body.page--portfolio-home-v3) {
     --v3-body-size: 19px;
     --v3-section-title-size: 30px;
     --v3-hero-to-content-gap: 40px;
-    --v3-section-gap: 80px;
+    --v3-section-gap: 100px;
     --v3-content-gap: 36px;
     --v3-works-gap: 60px;
-    --v3-work-card-gap: 120px;
+    --v3-work-card-gap: 80px;
   }
 
   .page--portfolio-home-v3 .portfolio-shell-v3 {
@@ -2422,10 +2422,10 @@ html:has(body.page--portfolio-home-v3) {
     --v3-section-title-size: 28px;
     --v3-section-index-size: 18px;
     --v3-hero-to-content-gap: 32px;
-    --v3-section-gap: 64px;
+    --v3-section-gap: 100px;
     --v3-content-gap: 28px;
     --v3-works-gap: 40px;
-    --v3-work-card-gap: 60px;
+    --v3-work-card-gap: 80px;
     --v3-stacked-gap: 32px;
   }
 
@@ -2508,10 +2508,10 @@ html:has(body.page--portfolio-home-v3) {
     --v3-section-title-size: 24px;
     --v3-section-index-size: 16px;
     --v3-hero-to-content-gap: 24px;
-    --v3-section-gap: 48px;
+    --v3-section-gap: 100px;
     --v3-content-gap: 24px;
     --v3-works-gap: 40px;
-    --v3-work-card-gap: 60px;
+    --v3-work-card-gap: 80px;
     --v3-stacked-gap: 32px;
   }
 
@@ -3150,6 +3150,14 @@ body.page--case-booking-v2 {
   .page--case-booking-v2 .case-booking-v2__screen {
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
+  }
+
+  .page--case-booking-v2 .case-booking-v2__screen-copy {
+    order: 2;
+  }
+
+  .page--case-booking-v2 .case-booking-v2__screen-media {
+    order: 1;
   }
 
   .page--case-booking-v2 .case-booking-v2__summary,

@@ -101,7 +101,7 @@ window.PORTFOLIO_CONTENT = {
         imageSrcSet: "./assets/work-card-sports-concept-1980.png 1980w, ./assets/work-card-sports-concept-2640.png 2640w, ./assets/work-card-sports-concept.png 3960w",
         imageAlt: "Превью концепта спортивного приложения",
         imageWidth: 3960,
-        imageHeight: 1568
+        imageHeight: 1572
       },
       {
         title: "Концепт подбора квартиры на сайте",
