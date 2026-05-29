@@ -79,8 +79,8 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-documents.png",
-        imageSrcSet: "./assets/work-card-documents-1980.png 1980w, ./assets/work-card-documents-2640.png 2640w, ./assets/work-card-documents.png 3960w",
+        imageSrc: "./assets/work-card-documents.png?v=20260529",
+        imageSrcSet: "./assets/work-card-documents-1980.png?v=20260529 1980w, ./assets/work-card-documents-2640.png?v=20260529 2640w, ./assets/work-card-documents.png?v=20260529 3960w",
         imageAlt: "Превью кейса Документы в сделке застройщика",
         imageWidth: 3960,
         imageHeight: 1572
