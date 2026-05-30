@@ -2924,6 +2924,7 @@ body.page--case-booking-v2 {
 .page--case-booking-v2 .case-booking-v2__title {
   font-size: var(--case-title-size);
   line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .page--case-booking-v2 .case-booking-v2__hero-grid {
@@ -2995,11 +2996,17 @@ body.page--case-booking-v2 {
 }
 
 .page--case-booking-v2 .case-booking-v2__hero-media img,
+.page--case-booking-v2 .case-booking-v2__context-image img,
 .page--case-booking-v2 .case-booking-v2__screen-media img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
+}
+
+.page--case-booking-v2 .case-booking-v2__context-image {
+  width: 100%;
+  aspect-ratio: 4096 / 1282;
 }
 
 .page--case-booking-v2 .case-booking-v2__section {
@@ -3104,7 +3111,7 @@ body.page--case-booking-v2 {
 }
 
 .page--case-booking-v2 .case-booking-v2__screen-media--manager {
-  aspect-ratio: 3912 / 1794;
+  aspect-ratio: 3720 / 1920;
 }
 
 .page--case-booking-v2 .case-booking-v2__screen-media--admin {
@@ -3180,7 +3187,7 @@ body.page--case-booking-v2 {
     --case-page-inline: 20px;
     --case-section-title-size: 24px;
     --case-section-index-size: 16px;
-    --case-title-size: 36px;
+    --case-title-size: 30px;
     --case-metric-size: 36px;
     --case-section-gap: 60px;
     --case-block-gap: 60px;
@@ -3201,6 +3208,13 @@ body.page--case-booking-v2 {
 
   .page--case-booking-v2 .case-booking-v2__screens {
     gap: 60px;
+  }
+
+  .page--case-booking-v2 p,
+  .page--case-booking-v2 li,
+  .page--case-booking-v2 .case-booking-v2__metric span {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
 }
@@ -3526,6 +3540,7 @@ body.page--case-booking-v2 {
 }
 
 .page--case-booking-v2 .case-booking-v2__hero-media img,
+.page--case-booking-v2 .case-booking-v2__context-image img,
 .page--case-booking-v2 .case-booking-v2__screen-media img,
 .page--case-documents-v1 .case-documents-v1__hero-media img,
 .page--case-documents-v1 .case-documents-v1__screen-media img {

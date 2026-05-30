@@ -524,6 +524,7 @@
 
     const imageSelector = [
       ".case-booking-v2__hero-media img",
+      ".case-booking-v2__context-image img",
       ".case-booking-v2__screen-media img",
       ".case-documents-v1__hero-media img",
       ".case-documents-v1__screen-media img"
