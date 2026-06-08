@@ -500,43 +500,51 @@
 
 
   const initSpecialEntryContext = () => {
-    const specialEntry = "timepad";
-    const specialQuery = `from=${specialEntry}`;
-    const specialHomeHref = "../../timepad.html";
+    const entries = {
+      timepad: { bodyClass: "page--special-timepad", homeHref: "../../timepad.html", label: "Timepad" },
+      cloud: { bodyClass: "page--special-cloud", homeHref: "../../cloud.html", label: "Cloud" }
+    };
     const url = new URL(window.location.href);
-    const cameFromSpecialPage =
-      url.searchParams.get("from") === specialEntry ||
-      document.referrer.includes("/timepad.html");
+    const activePageEntry = Object.entries(entries).find(([, entry]) => body.classList.contains(entry.bodyClass));
 
-    if (body.classList.contains("page--portfolio-home") && !body.classList.contains("page--special-timepad")) {
+    if (body.classList.contains("page--portfolio-home") && !activePageEntry) {
       sessionStorage.removeItem("portfolio-special-entry");
     }
 
-    if (body.classList.contains("page--special-timepad")) {
+    if (activePageEntry) {
+      const [specialEntry] = activePageEntry;
+      const specialQuery = `from=${specialEntry}`;
       sessionStorage.setItem("portfolio-special-entry", specialEntry);
 
       document.querySelectorAll(".project-card-v3__media[href], .project-card-v3__title-link[href], .project-card-v3__cta[href]").forEach((link) => {
         const href = link.getAttribute("href") || "";
-        if (!href || href.startsWith("#") || href.includes("from=timepad")) return;
+        if (!href || href.startsWith("#") || href.includes("from=")) return;
         link.setAttribute("href", `${href}${href.includes("?") ? "&" : "?"}${specialQuery}`);
       });
 
       return;
     }
 
+    const specialEntry = url.searchParams.get("from");
+    const entry = entries[specialEntry];
+    const cameFromSpecialPage = Boolean(entry) || Object.entries(entries).some(([key]) => document.referrer.includes(`/${key}.html`));
     if (!cameFromSpecialPage) return;
 
-    sessionStorage.setItem("portfolio-special-entry", specialEntry);
+    const resolvedEntry = entry ? specialEntry : Object.keys(entries).find((key) => document.referrer.includes(`/${key}.html`));
+    const resolved = entries[resolvedEntry];
+    if (!resolved) return;
+
+    sessionStorage.setItem("portfolio-special-entry", resolvedEntry);
 
     document.querySelectorAll(".case-booking-v2__back, .case-documents-v1__back").forEach((link) => {
-      link.setAttribute("href", specialHomeHref);
-      link.setAttribute("aria-label", "Назад на специальную страницу Timepad");
+      link.setAttribute("href", resolved.homeHref);
+      link.setAttribute("aria-label", `Назад на специальную страницу ${resolved.label}`);
     });
 
     document.querySelectorAll(".case-booking-v2__next[href], .case-documents-v1__next[href]").forEach((link) => {
       const href = link.getAttribute("href") || "";
-      if (!href || href.includes("from=timepad")) return;
-      link.setAttribute("href", `${href}${href.includes("?") ? "&" : "?"}${specialQuery}`);
+      if (!href || href.includes("from=")) return;
+      link.setAttribute("href", `${href}${href.includes("?") ? "&" : "?"}from=${resolvedEntry}`);
     });
   };
   initSpecialEntryContext();
