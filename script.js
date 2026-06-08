@@ -498,6 +498,49 @@
     });
   }
 
+
+  const initSpecialEntryContext = () => {
+    const specialEntry = "timepad";
+    const specialQuery = `from=${specialEntry}`;
+    const specialHomeHref = "../../timepad.html";
+    const url = new URL(window.location.href);
+    const cameFromSpecialPage =
+      url.searchParams.get("from") === specialEntry ||
+      document.referrer.includes("/timepad.html");
+
+    if (body.classList.contains("page--portfolio-home") && !body.classList.contains("page--special-timepad")) {
+      sessionStorage.removeItem("portfolio-special-entry");
+    }
+
+    if (body.classList.contains("page--special-timepad")) {
+      sessionStorage.setItem("portfolio-special-entry", specialEntry);
+
+      document.querySelectorAll(".project-card-v3__media[href], .project-card-v3__title-link[href], .project-card-v3__cta[href]").forEach((link) => {
+        const href = link.getAttribute("href") || "";
+        if (!href || href.startsWith("#") || href.includes("from=timepad")) return;
+        link.setAttribute("href", `${href}${href.includes("?") ? "&" : "?"}${specialQuery}`);
+      });
+
+      return;
+    }
+
+    if (!cameFromSpecialPage) return;
+
+    sessionStorage.setItem("portfolio-special-entry", specialEntry);
+
+    document.querySelectorAll(".case-booking-v2__back, .case-documents-v1__back").forEach((link) => {
+      link.setAttribute("href", specialHomeHref);
+      link.setAttribute("aria-label", "Назад на специальную страницу Timepad");
+    });
+
+    document.querySelectorAll(".case-booking-v2__next[href], .case-documents-v1__next[href]").forEach((link) => {
+      const href = link.getAttribute("href") || "";
+      if (!href || href.includes("from=timepad")) return;
+      link.setAttribute("href", `${href}${href.includes("?") ? "&" : "?"}${specialQuery}`);
+    });
+  };
+  initSpecialEntryContext();
+
   const filterButtons = document.querySelectorAll("[data-filter]");
   const filterItems = document.querySelectorAll("[data-case-type]");
 
