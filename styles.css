@@ -3006,7 +3006,7 @@ body.page--case-booking-v2 {
 
 .page--case-booking-v2 .case-booking-v2__context-image {
   width: 100%;
-  aspect-ratio: 4096 / 1282;
+  aspect-ratio: 4516 / 1413;
 }
 
 .page--case-booking-v2 .case-booking-v2__section {
@@ -3085,7 +3085,7 @@ body.page--case-booking-v2 {
 
 .page--case-booking-v2 .case-booking-v2__screen-copy {
   display: grid;
-  gap: 8px;
+  gap: 24px;
   order: 1;
 }
 
@@ -3107,15 +3107,15 @@ body.page--case-booking-v2 {
 }
 
 .page--case-booking-v2 .case-booking-v2__screen-media--wide {
-  aspect-ratio: 2643 / 1841;
+  aspect-ratio: 2088 / 1344;
 }
 
 .page--case-booking-v2 .case-booking-v2__screen-media--manager {
-  aspect-ratio: 3720 / 1920;
+  aspect-ratio: 2088 / 1344;
 }
 
 .page--case-booking-v2 .case-booking-v2__screen-media--admin {
-  aspect-ratio: 2718 / 1599;
+  aspect-ratio: 2088 / 1344;
 }
 
 @media (max-width: 1439px) {
@@ -3602,8 +3602,10 @@ body.is-lightbox-open {
   border: 0;
   background: rgb(255 255 255 / 0.12);
   color: #fff;
-  display: inline-grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   transition: background-color 160ms ease, opacity 160ms ease;
 }
 
@@ -3627,24 +3629,66 @@ body.is-lightbox-open {
   width: 48px;
   height: 48px;
   border-radius: 999px;
-  font-size: 32px;
+  font-size: 0;
   line-height: 1;
+}
+
+.case-lightbox__close::before,
+.case-lightbox__close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: center;
+}
+
+.case-lightbox__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.case-lightbox__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .case-lightbox__nav {
   width: 56px;
   height: 56px;
   border-radius: 999px;
-  font-size: 44px;
+  font-size: 0;
   line-height: 1;
+}
+
+.case-lightbox__nav span {
+  display: none;
+}
+
+.case-lightbox__nav::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform-origin: center;
 }
 
 .case-lightbox__nav--prev {
   justify-self: start;
 }
 
+.case-lightbox__nav--prev::before {
+  transform: translateX(2px) rotate(-135deg);
+}
+
 .case-lightbox__nav--next {
   justify-self: end;
+}
+
+.case-lightbox__nav--next::before {
+  transform: translateX(-2px) rotate(45deg);
 }
 
 .page--case-documents-v1 .case-documents-v1__screen-media--wide {
@@ -4237,4 +4281,16 @@ body.page--special-cloud {
   .page--special-cloud .portfolio-header-v3__brand span:last-child {
     overflow-wrap: anywhere;
   }
+}
+.page--case-booking-v2 .case-booking-v2__discovery-media {
+  width: 100%;
+  margin-top: 16px;
+  aspect-ratio: 2625 / 1632;
+}
+
+.page--case-booking-v2 .case-booking-v2__discovery-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
