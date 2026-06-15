@@ -3542,7 +3542,9 @@ body.page--case-booking-v2 {
 .page--case-booking-v2 .case-booking-v2__hero-media img,
 .page--case-booking-v2 .case-booking-v2__context-image img,
 .page--case-booking-v2 .case-booking-v2__screen-media img,
+.page--case-booking-v2 .case-booking-v2__discovery-media img,
 .page--case-documents-v1 .case-documents-v1__hero-media img,
+.page--case-documents-v1 .case-documents-v1__discovery-media img,
 .page--case-documents-v1 .case-documents-v1__screen-media img {
   cursor: zoom-in;
 }
@@ -3879,8 +3881,21 @@ body.is-lightbox-open {
 
 
 .page--case-documents-v1 .case-documents-v1__discovery .case-documents-v1__section-content {
-  gap: 10px;
+  gap: 16px;
 }
+
+.page--case-documents-v1 .case-documents-v1__discovery-media {
+  width: 100%;
+  aspect-ratio: 2625 / 1632;
+}
+
+.page--case-documents-v1 .case-documents-v1__discovery-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .page--case-documents-v1 .case-documents-v1__discovery-item {
   display: grid;
   gap: 16px;
@@ -3908,7 +3923,7 @@ body.is-lightbox-open {
 }
 
 .page--case-documents-v1 .case-documents-v1__solution .case-documents-v1__screens {
-  gap: 100px;
+  gap: 80px;
 }
 
 .page--case-documents-v1 .case-documents-v1__screen-copy--stacked {
@@ -3916,12 +3931,12 @@ body.is-lightbox-open {
 }
 
 .page--case-documents-v1 .case-documents-v1__screen-media--wide {
-  aspect-ratio: 2625 / 1641;
+  aspect-ratio: 2088 / 1344;
 }
 
 .page--case-documents-v1 .case-documents-v1__screen:not(.case-documents-v1__screen--before):not(.case-documents-v1__screen--after) .case-documents-v1__screen-media,
 .page--case-documents-v1 .case-documents-v1__solution .case-documents-v1__screen-media {
-  aspect-ratio: 2643 / 1659;
+  aspect-ratio: 2088 / 1344;
 }
 
 @media (max-width: 1023px) {

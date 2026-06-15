@@ -66,8 +66,8 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B", "B2C"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-booking.png",
-        imageSrcSet: "./assets/work-card-booking-1980.png 1980w, ./assets/work-card-booking-2640.png 2640w, ./assets/work-card-booking.png 3960w",
+        imageSrc: "./assets/work-card-booking.png?v=20260615-cover",
+        imageSrcSet: "./assets/work-card-booking-1980.png?v=20260615-cover 1980w, ./assets/work-card-booking-2640.png?v=20260615-cover 2640w, ./assets/work-card-booking.png?v=20260615-cover 3960w",
         imageAlt: "Превью кейса Онлайн-бронирование для застройщика",
         imageWidth: 3960,
         imageHeight: 1568
