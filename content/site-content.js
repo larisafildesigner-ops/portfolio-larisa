@@ -66,8 +66,8 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B", "B2C"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-booking.png?v=20260615-cover",
-        imageSrcSet: "./assets/work-card-booking-1980.png?v=20260615-cover 1980w, ./assets/work-card-booking-2640.png?v=20260615-cover 2640w, ./assets/work-card-booking.png?v=20260615-cover 3960w",
+        imageSrc: "./assets/work-card-booking.png?v=20260714-cover",
+        imageSrcSet: "./assets/work-card-booking-1980.png?v=20260714-cover 1980w, ./assets/work-card-booking-2640.png?v=20260714-cover 2640w, ./assets/work-card-booking.png?v=20260714-cover 3960w",
         imageAlt: "Превью кейса Онлайн-бронирование для застройщика",
         imageWidth: 3960,
         imageHeight: 1568
@@ -79,8 +79,8 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-documents.png?v=20260529",
-        imageSrcSet: "./assets/work-card-documents-1980.png?v=20260529 1980w, ./assets/work-card-documents-2640.png?v=20260529 2640w, ./assets/work-card-documents.png?v=20260529 3960w",
+        imageSrc: "./assets/work-card-documents.png?v=20260714-cover",
+        imageSrcSet: "./assets/work-card-documents-1980.png?v=20260714-cover 1980w, ./assets/work-card-documents-2640.png?v=20260714-cover 2640w, ./assets/work-card-documents.png?v=20260714-cover 3960w",
         imageAlt: "Превью кейса Документы в сделке застройщика",
         imageWidth: 3960,
         imageHeight: 1572
