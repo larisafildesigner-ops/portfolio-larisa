@@ -86,6 +86,14 @@ window.PORTFOLIO_CONTENT = {
         imageHeight: 1572
       },
       {
+        title: "\u041a\u043e\u043d\u0446\u0435\u043f\u0442 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u043b\u0430\u0442\u0435\u0436\u0435\u0439",
+        chips: ["B2B", "\u041a\u043e\u043d\u0446\u0435\u043f\u0442"],
+        imageSrc: "./assets/work-card-payments.png?v=20260729-333",
+        imageAlt: "\u041f\u0440\u0435\u0432\u044c\u044e \u043a\u043e\u043d\u0446\u0435\u043f\u0442\u0430 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u043b\u0430\u0442\u0435\u0436\u0435\u0439",
+        imageWidth: 3960,
+        imageHeight: 1572
+      },
+      {
         title: "Концепт дашборда для поддержки",
         chips: ["B2B", "Концепт"],
         imageSrc: "./assets/work-card-support.png",
