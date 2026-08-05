@@ -128,6 +128,7 @@
         [
           ".portfolio-header-v3__cv",
           ".portfolio-header-v3__nav a",
+          ".portfolio-word-map__item",
           ".contacts-v3__links a",
           ".project-card-v3__cta",
           ".case-booking-v2__back span:not(.case-back-chevron)",
@@ -170,12 +171,13 @@
       }
     });
 
-    renderCollection("portfolio-work-card-template", "[data-content-works]", content.works.items, (fragment, item) => {
+    const renderProjectCard = (fragment, item, isConcept = false) => {
       let card = fragment.querySelector(".project-card-v3");
       const media = fragment.querySelector(".project-card-v3__media");
       const titleLink = fragment.querySelector(".project-card-v3__title-link");
-      const chips = fragment.querySelector(".project-card-v3__chips");
       let image = fragment.querySelector("img");
+
+      if (isConcept) card.classList.add("project-card-v3--concept");
 
       if (item.cardSize) {
         card.classList.add(`project-card-v3--${item.cardSize}`);
@@ -217,24 +219,24 @@
         cta.remove();
       }
 
-      if (Array.isArray(item.chips) && item.chips.length > 0) {
-        chips.setAttribute("aria-label", "Теги кейса");
-        item.chips.forEach((chip) => {
-          const element = document.createElement("span");
-          element.className = "project-card-v3__chip";
-          if (chip === "Концепт") {
-            element.classList.add("project-card-v3__chip--concept");
-          }
-          element.textContent = chip;
-          chips.append(element);
-        });
-        if (item.mobileCtaLabel) {
-          cta.dataset.mobileLabel = item.mobileCtaLabel;
-        }
-      } else {
-        chips.remove();
+      if (item.mobileCtaLabel && cta.isConnected) {
+        cta.dataset.mobileLabel = item.mobileCtaLabel;
       }
-    });
+    };
+
+    renderCollection("portfolio-work-card-template", "[data-content-works]", content.works.items.slice(0, 2), renderProjectCard);
+
+    const worksSection = document.querySelector("#works");
+    const conceptsSection = document.createElement("section");
+    conceptsSection.className = "concepts-v3 reveal";
+    conceptsSection.id = "concepts";
+    conceptsSection.setAttribute("aria-labelledby", "concepts-title");
+    conceptsSection.innerHTML = `
+      <h2 class="portfolio-h3-v3" id="concepts-title">Концепты <span class="portfolio-h3-v3__index">02</span></h2>
+      <div class="concepts-v3__grid" data-content-concepts></div>
+    `;
+    if (worksSection) worksSection.after(conceptsSection);
+    renderCollection("portfolio-work-card-template", "[data-content-concepts]", content.works.items.slice(2), (fragment, item) => renderProjectCard(fragment, item, true));
 
     renderCollection("portfolio-contact-item-template", "[data-content-contacts]", content.contacts.items, (fragment, item) => {
       const link = fragment.querySelector("a");
