@@ -88,8 +88,8 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт дашборда для поддержки",
         chips: ["B2B", "Концепт"],
-        imageSrc: "./assets/work-card-support.png",
-        imageSrcSet: "./assets/work-card-support-1980.png 1980w, ./assets/work-card-support-2640.png 2640w, ./assets/work-card-support.png 3960w",
+        imageSrc: "./assets/concept-card-support-v2.png",
+        imageSrcSet: "",
         imageAlt: "Превью кейса Концепт дашборда для поддержки",
         imageWidth: 3960,
         imageHeight: 1572
@@ -97,8 +97,8 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт спортивного приложения",
         chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/work-card-sports-concept.png",
-        imageSrcSet: "./assets/work-card-sports-concept-1980.png 1980w, ./assets/work-card-sports-concept-2640.png 2640w, ./assets/work-card-sports-concept.png 3960w",
+        imageSrc: "./assets/concept-card-volleyball-v1.png",
+        imageSrcSet: "",
         imageAlt: "Превью концепта спортивного приложения",
         imageWidth: 3960,
         imageHeight: 1572
@@ -106,8 +106,8 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт подбора квартиры на сайте",
         chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/work-card-apartment-concept.jpg",
-        imageSrcSet: "./assets/work-card-apartment-concept-1980.jpg 1980w, ./assets/work-card-apartment-concept-2640.jpg 2640w, ./assets/work-card-apartment-concept.jpg 3960w",
+        imageSrc: "./assets/concept-card-residential-v1.png",
+        imageSrcSet: "",
         imageAlt: "Превью концепта подбора квартиры на сайте",
         imageWidth: 3960,
         imageHeight: 1572
