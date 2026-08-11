@@ -24,10 +24,10 @@ window.PORTFOLIO_CONTENT = {
     badgeWidth: 190,
     badgeHeight: 190,
     subhead:
-      "Проектирую сложные сценарии, где важно связать UX, бизнес-логику и ограничения системы"
+      "Проектирую сложные сценарии, где важно связать UX, бизнес-логику и ограничения системы"
   },
   about: {
-    title: "Обо мне",
+    title: "Опыт",
     paragraphs: [
       "Я продуктовый дизайнер с опытом 4 года.",
       "Проектирую сложные сценарии на стыке UX, бизнес-логики и системных ограничений. Умею быстро находить критический путь, собирать MVP и доводить решения до запуска.",
@@ -66,11 +66,11 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B", "B2C"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-booking.png?v=20260714-cover",
-        imageSrcSet: "./assets/work-card-booking-1980.png?v=20260714-cover 1980w, ./assets/work-card-booking-2640.png?v=20260714-cover 2640w, ./assets/work-card-booking.png?v=20260714-cover 3960w",
+        imageSrc: "./assets/work-card-booking-v2.png?v=20260805-card",
+        imageSrcSet: "",
         imageAlt: "Превью кейса Онлайн-бронирование для застройщика",
         imageWidth: 3960,
-        imageHeight: 1568
+        imageHeight: 1572
       },
       {
         href: "./work/documents-in-deal/index.html",
@@ -79,25 +79,17 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-documents.png?v=20260714-cover",
-        imageSrcSet: "./assets/work-card-documents-1980.png?v=20260714-cover 1980w, ./assets/work-card-documents-2640.png?v=20260714-cover 2640w, ./assets/work-card-documents.png?v=20260714-cover 3960w",
+        imageSrc: "./assets/work-card-documents-v2.png?v=20260805-card",
+        imageSrcSet: "",
         imageAlt: "Превью кейса Документы в сделке застройщика",
-        imageWidth: 3960,
-        imageHeight: 1572
-      },
-      {
-        title: "\u041a\u043e\u043d\u0446\u0435\u043f\u0442 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u043b\u0430\u0442\u0435\u0436\u0435\u0439",
-        chips: ["B2B", "\u041a\u043e\u043d\u0446\u0435\u043f\u0442"],
-        imageSrc: "./assets/work-card-payments.png?v=20260729-333",
-        imageAlt: "\u041f\u0440\u0435\u0432\u044c\u044e \u043a\u043e\u043d\u0446\u0435\u043f\u0442\u0430 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u043b\u0430\u0442\u0435\u0436\u0435\u0439",
         imageWidth: 3960,
         imageHeight: 1572
       },
       {
         title: "Концепт дашборда для поддержки",
         chips: ["B2B", "Концепт"],
-        imageSrc: "./assets/work-card-support.png",
-        imageSrcSet: "./assets/work-card-support-1980.png 1980w, ./assets/work-card-support-2640.png 2640w, ./assets/work-card-support.png 3960w",
+        imageSrc: "./assets/concept-card-support-v2.png",
+        imageSrcSet: "",
         imageAlt: "Превью кейса Концепт дашборда для поддержки",
         imageWidth: 3960,
         imageHeight: 1572
@@ -105,8 +97,8 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт спортивного приложения",
         chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/work-card-sports-concept.png",
-        imageSrcSet: "./assets/work-card-sports-concept-1980.png 1980w, ./assets/work-card-sports-concept-2640.png 2640w, ./assets/work-card-sports-concept.png 3960w",
+        imageSrc: "./assets/concept-card-volleyball-v1.png",
+        imageSrcSet: "",
         imageAlt: "Превью концепта спортивного приложения",
         imageWidth: 3960,
         imageHeight: 1572
@@ -114,8 +106,8 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт подбора квартиры на сайте",
         chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/work-card-apartment-concept.jpg",
-        imageSrcSet: "./assets/work-card-apartment-concept-1980.jpg 1980w, ./assets/work-card-apartment-concept-2640.jpg 2640w, ./assets/work-card-apartment-concept.jpg 3960w",
+        imageSrc: "./assets/concept-card-residential-v1.png",
+        imageSrcSet: "",
         imageAlt: "Превью концепта подбора квартиры на сайте",
         imageWidth: 3960,
         imageHeight: 1572
