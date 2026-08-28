@@ -111,6 +111,24 @@ window.PORTFOLIO_CONTENT = {
         imageAlt: "Превью концепта подбора квартиры на сайте",
         imageWidth: 3960,
         imageHeight: 1572
+      },
+      {
+        title: "Концепт календаря команды",
+        chips: ["B2C", "Концепт"],
+        imageSrc: "./assets/concept-card-calendar-v1.png",
+        imageSrcSet: "",
+        imageAlt: "Превью концепта календаря команды",
+        imageWidth: 3960,
+        imageHeight: 1572
+      },
+      {
+        title: "Концепт умного найма",
+        chips: ["B2B", "Концепт"],
+        imageSrc: "./assets/concept-card-recruiting-v1.png",
+        imageSrcSet: "",
+        imageAlt: "Превью концепта умного найма",
+        imageWidth: 3960,
+        imageHeight: 1572
       }
     ]
   },
