@@ -66,7 +66,7 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B", "B2C"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-booking-v2.png?v=20260805-card",
+        imageSrc: "./assets/work-card-booking-v3.png?v=20261015-card",
         imageSrcSet: "",
         imageAlt: "Превью кейса Онлайн-бронирование для застройщика",
         imageWidth: 3960,
@@ -79,7 +79,7 @@ window.PORTFOLIO_CONTENT = {
         chips: ["B2B"],
         ctaLabel: "Посмотреть кейс",
         mobileCtaLabel: "Посмотреть",
-        imageSrc: "./assets/work-card-documents-v2.png?v=20260805-card",
+        imageSrc: "./assets/work-card-documents-v3.png?v=20261015-card",
         imageSrcSet: "",
         imageAlt: "Превью кейса Документы в сделке застройщика",
         imageWidth: 3960,
@@ -88,45 +88,63 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт дашборда для поддержки",
         chips: ["B2B", "Концепт"],
-        imageSrc: "./assets/concept-card-support-v2.png",
+        imageSrc: "./assets/concept-card-support-v3.png?v=20261015-concepts",
         imageSrcSet: "",
         imageAlt: "Превью кейса Концепт дашборда для поддержки",
         imageWidth: 3960,
         imageHeight: 1572
       },
       {
-        title: "Концепт спортивного приложения",
-        chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/concept-card-volleyball-v1.png",
-        imageSrcSet: "",
-        imageAlt: "Превью концепта спортивного приложения",
-        imageWidth: 3960,
-        imageHeight: 1572
-      },
-      {
         title: "Концепт подбора квартиры на сайте",
         chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/concept-card-residential-v1.png",
+        imageSrc: "./assets/concept-card-residential-v2.png?v=20261015-concepts",
         imageSrcSet: "",
         imageAlt: "Превью концепта подбора квартиры на сайте",
         imageWidth: 3960,
         imageHeight: 1572
       },
       {
-        title: "Концепт календаря команды",
-        chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/concept-card-calendar-v1.png",
+        title: "Приложение для финансового директора",
+        chips: ["B2B", "Концепт"],
+        imageSrc: "./assets/concept-card-finance-v2.png?v=20261015-finance-v2",
         imageSrcSet: "",
-        imageAlt: "Превью концепта календаря команды",
+        imageAlt: "Превью приложения для финансового директора",
+        imageWidth: 3960,
+        imageHeight: 1572
+      },
+      {
+        title: "Концепт спортивного приложения",
+        chips: ["B2C", "Концепт"],
+        imageSrc: "./assets/concept-card-volleyball-v3.png?v=20261015-concepts-v3",
+        imageSrcSet: "",
+        imageAlt: "Превью концепта спортивного приложения",
+        imageWidth: 3960,
+        imageHeight: 1572
+      },
+      {
+        title: "Концепт приложения для бега",
+        chips: ["B2C", "Концепт"],
+        imageSrc: "./assets/concept-card-running-v2.png?v=20261015-running-v2",
+        imageSrcSet: "",
+        imageAlt: "Превью концепта приложения для бега",
         imageWidth: 3960,
         imageHeight: 1572
       },
       {
         title: "Концепт умного найма",
         chips: ["B2B", "Концепт"],
-        imageSrc: "./assets/concept-card-recruiting-v1.png",
+        imageSrc: "./assets/concept-card-recruiting-v2.png?v=20261015-concepts",
         imageSrcSet: "",
         imageAlt: "Превью концепта умного найма",
+        imageWidth: 3960,
+        imageHeight: 1572
+      },
+      {
+        title: "Концепт электронного документооборота",
+        chips: ["B2B", "Концепт"],
+        imageSrc: "./assets/concept-card-document-flow-v1.png?v=20261015-document-flow",
+        imageSrcSet: "",
+        imageAlt: "Превью концепта электронного документооборота",
         imageWidth: 3960,
         imageHeight: 1572
       }
@@ -136,8 +154,9 @@ window.PORTFOLIO_CONTENT = {
     title: "Контакты",
     items: [
       {
-        text: true,
-        label: "larisafildesigner@gmail.com"
+        href: "https://pin.it/4gAYWKzBb",
+        label: "Pinterest",
+        newTab: true
       },
       {
         href: "https://www.behance.net/6451c714",
@@ -148,6 +167,10 @@ window.PORTFOLIO_CONTENT = {
         href: "https://t.me/LaChaika",
         label: "Telegram",
         newTab: true
+      },
+      {
+        href: "mailto:larisafildesigner@gmail.com",
+        label: "Поработаем вместе?"
       }
     ]
   }
