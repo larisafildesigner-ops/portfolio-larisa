@@ -4552,6 +4552,32 @@ body.page--special-cloud {
 }
 
 @media (max-width: 720px) {
+  .page--portfolio-home-v3 .portfolio-main-v3,
+  .page--portfolio-home-v3 .portfolio-header-v3,
+  .page--portfolio-home-v3 .portfolio-content-v3,
+  .page--portfolio-home-v3 .portfolio-hero-v3,
+  .page--portfolio-home-v3 .portfolio-word-map,
+  .page--portfolio-home-v3 .works-v3,
+  .page--portfolio-home-v3 .works-v3__grid,
+  .page--portfolio-home-v3 .concepts-v3,
+  .page--portfolio-home-v3 .concepts-v3__grid,
+  .page--portfolio-home-v3 .project-card-v3 {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .page--portfolio-home-v3 .portfolio-content-v3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page--portfolio-home-v3 .works-v3,
+  .page--portfolio-home-v3 .works-v3__grid,
+  .page--portfolio-home-v3 .concepts-v3,
+  .page--portfolio-home-v3 .concepts-v3__grid {
+    width: 100%;
+  }
+
   .page--portfolio-home-v3 .portfolio-hero-v3,
   .page--portfolio-home-v3 .portfolio-word-map {
     min-height: 620px;
@@ -4640,6 +4666,12 @@ body.page--special-cloud {
   .page--portfolio-home-v3 .contacts-v3__links a,
   .page--portfolio-home-v3 .contacts-v3__copy,
   .page--portfolio-home-v3 .contacts-v3__text {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     font-size: clamp(32px, 11vw, 64px);
+    overflow-wrap: normal;
+    word-break: keep-all;
   }
 }

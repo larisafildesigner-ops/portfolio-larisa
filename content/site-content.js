@@ -97,7 +97,7 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт подбора квартиры на сайте",
         chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/concept-card-residential-v2.png?v=20261015-concepts",
+        imageSrc: "./assets/concept-card-residential-v3.png?v=20261015-residential-v3",
         imageSrcSet: "",
         imageAlt: "Превью концепта подбора квартиры на сайте",
         imageWidth: 3960,
@@ -115,7 +115,7 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Концепт спортивного приложения",
         chips: ["B2C", "Концепт"],
-        imageSrc: "./assets/concept-card-volleyball-v3.png?v=20261015-concepts-v3",
+        imageSrc: "./assets/concept-card-volleyball-v4.png?v=20261015-concepts-v4",
         imageSrcSet: "",
         imageAlt: "Превью концепта спортивного приложения",
         imageWidth: 3960,
@@ -131,20 +131,20 @@ window.PORTFOLIO_CONTENT = {
         imageHeight: 1572
       },
       {
-        title: "Концепт умного найма",
+        title: "Концепт электронного документооборота",
         chips: ["B2B", "Концепт"],
-        imageSrc: "./assets/concept-card-recruiting-v2.png?v=20261015-concepts",
+        imageSrc: "./assets/concept-card-document-flow-v2.png?v=20261015-document-flow-v2",
         imageSrcSet: "",
-        imageAlt: "Превью концепта умного найма",
+        imageAlt: "Превью концепта электронного документооборота",
         imageWidth: 3960,
         imageHeight: 1572
       },
       {
-        title: "Концепт электронного документооборота",
+        title: "Приложение для комментариев по задачам",
         chips: ["B2B", "Концепт"],
-        imageSrc: "./assets/concept-card-document-flow-v1.png?v=20261015-document-flow",
+        imageSrc: "./assets/concept-card-task-comments-v1.png?v=20261015-task-comments-v1",
         imageSrcSet: "",
-        imageAlt: "Превью концепта электронного документооборота",
+        imageAlt: "Превью приложения для комментариев по задачам",
         imageWidth: 3960,
         imageHeight: 1572
       }
@@ -169,8 +169,8 @@ window.PORTFOLIO_CONTENT = {
         newTab: true
       },
       {
-        href: "mailto:larisafildesigner@gmail.com",
-        label: "Поработаем вместе?"
+        label: "Поработаем вместе?",
+        text: true
       }
     ]
   }
