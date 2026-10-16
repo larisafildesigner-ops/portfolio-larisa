@@ -16,7 +16,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap"></noscript>
     <link rel="stylesheet" href="./components/button.css">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=20261016-wordmap-v18">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){
@@ -43,11 +43,17 @@
             <span data-content="site.cvLabel">Резюме</span>
           </a>
         </div>
-        <nav class="portfolio-header-v3__nav" aria-label="Основная навигация" data-content-nav>
-          <a href="#works">Кейсы</a>
-          <a href="#about">Обо&nbsp;мне</a>
-          <a href="#contact">Контакты</a>
-        </nav>
+        <div class="portfolio-header-v3__right">
+          <nav class="portfolio-header-v3__nav" aria-label="Основная навигация" data-content-nav>
+            <a href="#works">Кейсы</a>
+            <a href="#about">Обо&nbsp;мне</a>
+            <a href="#contact">Контакты</a>
+          </nav>
+          <div class="portfolio-language-switcher" aria-label="Язык сайта">
+            <a href="?lang=en" data-locale-switch="en">EN</a>
+            <a href="?lang=ru" data-locale-switch="ru">RU</a>
+          </div>
+        </div>
       </header>
 
       <template id="portfolio-nav-item-template">
@@ -99,7 +105,7 @@
 
       <section class="portfolio-main-v3" aria-labelledby="hero-title">
         <div class="portfolio-hero-v3">
-          <h1 class="portfolio-hero-v3__title" id="hero-title">
+          <h1 class="portfolio-hero-v3__title" id="hero-title" data-content="hero.title">
             Лариса Филипповская — продуктовый дизайнер
           </h1>
           <nav class="portfolio-word-map" aria-label="Быстрые разделы портфолио">
@@ -323,13 +329,12 @@
             <a href="https://pin.it/4gAYWKzBb" target="_blank" rel="noreferrer">Pinterest</a>
             <a href="https://www.behance.net/6451c714" target="_blank" rel="noreferrer">Behance</a>
             <a href="https://t.me/LaChaika" target="_blank" rel="noreferrer">Telegram</a>
-            <span class="contacts-v3__text">Поработаем вместе?</span>
           </address>
         </footer>
       </div>
     </main>
 
-    <script src="./content/site-content.js?v=20261015-task-comments-v1"></script>
+    <script src="./content/site-content.js?v=20261016-en-v7"></script>
     <script src="./script.js?v=20261015-document-flow"></script>
   </body>
 </html>

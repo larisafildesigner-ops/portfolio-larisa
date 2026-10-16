@@ -1,7 +1,31 @@
 (function () {
   const root = document.documentElement;
   const body = document.body;
-  const content = window.PORTFOLIO_CONTENT;
+  const contentSource = window.PORTFOLIO_CONTENT;
+  const requestedLocale = new URLSearchParams(window.location.search).get("lang");
+  const activeLocale = requestedLocale === "en" || localStorage.getItem("portfolio-locale") === "en" ? "en" : "ru";
+
+  const buildLocalizedContent = (locale) => {
+    if (locale !== "en" || !contentSource.locales?.en) return contentSource;
+
+    const localized = JSON.parse(JSON.stringify(contentSource));
+    const english = localized.locales.en;
+    Object.assign(localized.site, english.site);
+    localized.navigation = localized.navigation.map((item, index) => ({ ...item, label: english.navigation[index] }));
+    Object.assign(localized.hero, english.hero);
+    Object.assign(localized.about, english.about);
+    Object.assign(localized.experience, english.experience);
+    localized.works.title = english.works.title;
+    localized.works.conceptsTitle = english.works.conceptsTitle;
+    localized.works.items = localized.works.items.map((item, index) => ({ ...item, ...english.works.items[index] }));
+    localized.contacts.title = english.contacts.title;
+    localized.contacts.items = localized.contacts.items.map((item, index) => ({ ...item, label: english.contacts.items[index] }));
+    delete localized.locales;
+    return localized;
+  };
+
+  const content = buildLocalizedContent(activeLocale);
+  root.lang = activeLocale;
 
   const getValueByPath = (source, path) => {
     return path.split(".").reduce((accumulator, part) => {
@@ -16,6 +40,20 @@
     if (element) {
       element.setAttribute("content", value);
     }
+  };
+
+  const initLanguageSwitcher = () => {
+    document.querySelectorAll("[data-locale-switch]").forEach((control) => {
+      const locale = control.getAttribute("data-locale-switch");
+      control.setAttribute("aria-current", locale === activeLocale ? "true" : "false");
+      control.addEventListener("click", (event) => {
+        event.preventDefault();
+        localStorage.setItem("portfolio-locale", locale);
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", locale);
+        window.location.href = url.toString();
+      });
+    });
   };
 
   const renderSimpleBindings = () => {
@@ -151,6 +189,24 @@
 
     renderSimpleBindings();
 
+    if (content.hero?.title) {
+      const heroTitle = document.querySelector("#hero-title");
+      if (heroTitle) heroTitle.textContent = content.hero.title;
+    }
+
+    if (Array.isArray(content.hero?.wordMap)) {
+      document.querySelectorAll(".portfolio-word-map__group").forEach((group, index) => {
+        const copy = content.hero.wordMap[index];
+        if (!copy) return;
+        const label = group.querySelector(".portfolio-word-map__item");
+        const note = group.querySelectorAll(".portfolio-word-map__note span");
+        if (label) label.textContent = copy.label;
+        note.forEach((line, lineIndex) => {
+          if (copy.note[lineIndex]) line.textContent = copy.note[lineIndex];
+        });
+      });
+    }
+
     renderCollection("portfolio-nav-item-template", "[data-content-nav]", content.navigation, (fragment, item) => {
       const link = fragment.querySelector("a");
       link.setAttribute("href", item.href);
@@ -232,7 +288,7 @@
     conceptsSection.id = "concepts";
     conceptsSection.setAttribute("aria-labelledby", "concepts-title");
     conceptsSection.innerHTML = `
-      <h2 class="portfolio-h3-v3" id="concepts-title">Концепты <span class="portfolio-h3-v3__index">02</span></h2>
+      <h2 class="portfolio-h3-v3" id="concepts-title">${content.works.conceptsTitle || "Концепты"} <span class="portfolio-h3-v3__index">02</span></h2>
       <div class="concepts-v3__grid" data-content-concepts></div>
     `;
     if (worksSection) worksSection.after(conceptsSection);
@@ -378,6 +434,7 @@
   };
 
   renderHomePage();
+  initLanguageSwitcher();
   initHeaderRollingHover();
   initContactCopy();
   initPortfolioDotField();

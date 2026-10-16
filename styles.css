@@ -1558,6 +1558,7 @@ html:has(body.page--portfolio-home-v3) {
   gap: 24px;
   min-height: 40px;
   padding: 0 var(--v3-page-inline);
+  position: relative;
 }
 
 .page--portfolio-home-v3 .portfolio-header-v3__identity {
@@ -1629,6 +1630,38 @@ html:has(body.page--portfolio-home-v3) {
   display: flex;
   align-items: center;
   gap: 40px;
+}
+
+.page--portfolio-home-v3 .portfolio-header-v3__right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  min-width: 0;
+}
+
+.page--portfolio-home-v3 .portfolio-language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--v3-body-size);
+  line-height: 1.3;
+}
+
+.page--portfolio-home-v3 .portfolio-language-switcher a {
+  color: var(--v3-text-primary);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.page--portfolio-home-v3 .portfolio-language-switcher a:hover,
+.page--portfolio-home-v3 .portfolio-language-switcher a:focus-visible,
+.page--portfolio-home-v3 .portfolio-language-switcher a[aria-current="true"] {
+  color: var(--v3-accent);
 }
 
 .page--portfolio-home-v3 .portfolio-header-v3__nav a,
@@ -2221,6 +2254,17 @@ html:has(body.page--portfolio-home-v3) {
   color: var(--v3-accent);
 }
 
+.page--portfolio-home-v3 .contacts-v3__links a[href*="t.me"],
+.page--portfolio-home-v3 .contacts-v3__links a[href*="t.me"]:hover,
+.page--portfolio-home-v3 .contacts-v3__links a[href*="t.me"]:focus-visible,
+.page--portfolio-home-v3 .contacts-v3__links a[href*="t.me"]:active {
+  color: var(--v3-text-primary) !important;
+}
+
+.page--portfolio-home-v3 .contacts-v3__links a[href*="t.me"] .portfolio-header-v3__nav-letter-face {
+  color: var(--v3-text-primary) !important;
+}
+
 .page--portfolio-home-v3 .portfolio-header-v3__brand,
 .page--portfolio-home-v3 .portfolio-header-v3__cv,
 .page--portfolio-home-v3 .portfolio-header-v3__nav a,
@@ -2580,6 +2624,10 @@ html:has(body.page--portfolio-home-v3) {
     gap: 0;
   }
 
+  .page--portfolio-home-v3 .portfolio-header-v3__right {
+    gap: 20px;
+  }
+
   .page--portfolio-home-v3 .portfolio-header-v3__identity {
     gap: 24px;
   }
@@ -2880,9 +2928,11 @@ html:has(body.page--portfolio-home-v3) {
 }
 
 .page--portfolio-home-v3 .portfolio-word-map__item {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 0;
   display: inline-flex;
-  margin-left: var(--word-map-item-left);
+  margin-left: 0;
   pointer-events: auto;
   color: inherit;
   -webkit-text-fill-color: currentColor;
@@ -2893,6 +2943,7 @@ html:has(body.page--portfolio-home-v3) {
   letter-spacing: 0.02em;
   text-decoration: none;
   white-space: nowrap;
+  transform: translateX(-50%);
   text-underline-offset: 0.12em;
   transition:
     color 180ms ease,
@@ -2963,6 +3014,13 @@ html:has(body.page--portfolio-home-v3) {
 .page--portfolio-home-v3 .portfolio-word-map__note span {
   display: block;
   width: 100%;
+}
+
+/* Keep the supporting copy on the same central axis as the large word labels. */
+.page--portfolio-home-v3 .portfolio-word-map__note {
+  left: 50%;
+  top: calc(clamp(88.4px, 10.4728vw, 150.8px) - 77px);
+  transform: translate(calc(-50% + 40px), -50%);
 }
 
 .page--portfolio-home-v3 .portfolio-word-map__group:focus-within .portfolio-word-map__note,
